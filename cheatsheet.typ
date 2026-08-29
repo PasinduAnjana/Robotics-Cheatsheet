@@ -32,10 +32,38 @@
 #set enum(spacing: 3.8pt)
 
 // ==========================================
-// REUSABLE FLAT LIGHT THEME COMPONENTS (NO OUTLINES)
+// LUCIDE SVG ICONS SYSTEM
 // ==========================================
 
-#let card(title: "", color: rgb("#4f46e5"), body) = {
+#let lucide(svg-paths, color: rgb("#4f46e5"), size: 8.5pt) = box(
+  width: size,
+  height: size,
+  baseline: 12%,
+  image(
+    bytes("<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='" + color.to-hex() + "' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'>" + svg-paths + "</svg>"),
+    format: "svg"
+  )
+)
+
+#let icon-bot(color: rgb("#4f46e5"), size: 8.5pt) = lucide("<path d='M12 8V4H8'/><rect width='16' height='12' x='4' y='8' rx='2'/><path d='M2 14h2'/><path d='M20 14h2'/><path d='M15 13v2'/><path d='M9 13v2'/>", color: color, size: size)
+#let icon-cpu(color: rgb("#059669"), size: 8.5pt) = lucide("<rect width='16' height='16' x='4' y='4' rx='2'/><rect width='6' height='6' x='9' y='9' rx='1'/><path d='M15 2v2'/><path d='M15 20v2'/><path d='M2 15h2'/><path d='M2 9h2'/><path d='M20 15h2'/><path d='M20 9h2'/><path d='M9 2v2'/><path d='M9 20v2'/>", color: color, size: size)
+#let icon-zap(color: rgb("#d97706"), size: 8.5pt) = lucide("<polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'/>", color: color, size: size)
+#let icon-eye(color: rgb("#0284c7"), size: 8.5pt) = lucide("<path d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/><circle cx='12' cy='12' r='3'/>", color: color, size: size)
+#let icon-shield(color: rgb("#d97706"), size: 8.5pt) = lucide("<path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/>", color: color, size: size)
+#let icon-layers(color: rgb("#7c3aed"), size: 8.5pt) = lucide("<path d='m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z'/><path d='m22 12.65-8.58 3.9a2 2 0 0 1-1.66 0L2 12.65'/><path d='m22 17.65-8.58 3.9a2 2 0 0 1-1.66 0L2 17.65'/>", color: color, size: size)
+#let icon-lightbulb(color: rgb("#d97706"), size: 8.5pt) = lucide("<path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/><path d='M9 18h6'/><path d='M10 22h4'/>", color: color, size: size)
+#let icon-compass(color: rgb("#2563eb"), size: 8.5pt) = lucide("<circle cx='12' cy='12' r='10'/><polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'/>", color: color, size: size)
+#let icon-radio(color: rgb("#7c3aed"), size: 8.5pt) = lucide("<path d='M4.9 19.1C1 15.2 1 8.8 4.9 4.9'/><path d='M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5'/><circle cx='12' cy='12' r='2'/><path d='M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5'/><path d='M19.1 4.9C23 8.8 23 15.2 19.1 19.1'/>", color: color, size: size)
+#let icon-gauge(color: rgb("#db2777"), size: 8.5pt) = lucide("<path d='m12 14 4-4'/><path d='M3.34 19a10 10 0 1 1 17.32 0'/>", color: color, size: size)
+#let icon-code(color: rgb("#2563eb"), size: 8.5pt) = lucide("<polyline points='16 18 22 12 16 6'/><polyline points='8 6 2 12 8 18'/>", color: color, size: size)
+#let icon-activity(color: rgb("#2563eb"), size: 8.5pt) = lucide("<path d='M22 12h-4l-3 9L9 3l-3 9H2'/>", color: color, size: size)
+#let icon-box(color: rgb("#7c3aed"), size: 8.5pt) = lucide("<path d='21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'/><polyline points='3.27 6.96 12 12.01 20.73 6.96'/><line x1='12' y1='22.08' x2='12' y2='12'/>", color: color, size: size)
+
+// ==========================================
+// REUSABLE FLAT LIGHT THEME COMPONENTS
+// ==========================================
+
+#let card(title: "", color: rgb("#4f46e5"), icon: none, body) = {
   block(
     width: 100%,
     stroke: none,
@@ -44,7 +72,7 @@
     clip: true,
     inset: 0pt,
     [
-      // Card Header (Flat)
+      // Card Header
       #block(
         width: 100%,
         fill: color.lighten(88%),
@@ -55,12 +83,14 @@
             columns: (auto, 1fr),
             gutter: 5pt,
             align: (left + horizon, left + horizon),
-            box(
-              width: 5pt,
-              height: 5pt,
-              radius: 100pt,
-              fill: color,
-            ),
+            if icon != none { icon } else {
+              box(
+                width: 5pt,
+                height: 5pt,
+                radius: 100pt,
+                fill: color,
+              )
+            },
             text(fill: color.darken(35%), weight: "bold", size: 8.3pt)[#title]
           )
         ]
@@ -136,12 +166,8 @@
       #grid(
         columns: (auto, 1fr),
         gutter: 5pt,
-        box(
-          width: 5pt,
-          height: 5pt,
-          radius: 100pt,
-          fill: rgb("#d97706"),
-        ),
+        align: (left + horizon, left + top),
+        icon-lightbulb(color: rgb("#d97706"), size: 9pt),
         [
           #text(size: 6.9pt, weight: "black", fill: rgb("#92400e"))[#title]\
           #v(1.5pt)
@@ -165,8 +191,10 @@
         gutter: 8pt,
         align: (left + horizon, left + horizon, right + horizon),
         [
-          #text(size: 11.5pt, weight: "black", fill: rgb("#4338ca"))[ROBOTICS]
+          #icon-bot(color: rgb("#4338ca"), size: 12pt)
           #h(3pt)
+          #text(size: 11.5pt, weight: "black", fill: rgb("#4338ca"))[ROBOTICS]
+          #h(2pt)
           #text(size: 11.5pt, weight: "black", fill: rgb("#0f172a"))[STUDY GUIDE]
         ],
         [
@@ -226,7 +254,7 @@
 #columns(3, gutter: 8.5pt)[
 
   // --- 1. WHAT IS A ROBOT? ---
-  #card(title: "1. What is a Robot?", color: rgb("#4f46e5"))[
+  #card(title: "1. What is a Robot?", color: rgb("#4f46e5"), icon: icon-bot(color: rgb("#4f46e5")))[
     #highlight("Core Definition:", color: rgb("#4338ca")) An electromechanical system characterized by three essential traits:
     #v(2.5pt)
     - #badge("Reprogrammable", color: rgb("#4f46e5")) Flexible software control
@@ -242,7 +270,7 @@
   ]
 
   // --- 2. AUTOMATION VS ROBOTS ---
-  #card(title: "2. Automation vs. Robots", color: rgb("#0284c7"))[
+  #card(title: "2. Automation vs. Robots", color: rgb("#0284c7"), icon: icon-layers(color: rgb("#0284c7")))[
     #rounded-table(
       columns: (1fr, 1fr),
       inset: 4.0pt,
@@ -273,7 +301,7 @@
   ]
 
   // --- 3. 3 LAWS OF ROBOTICS ---
-  #card(title: "3. Asimov's 3 Laws of Robotics", color: rgb("#d97706"))[
+  #card(title: "3. Asimov's 3 Laws of Robotics", color: rgb("#d97706"), icon: icon-shield(color: rgb("#d97706")))[
     #grid(
       columns: (auto, 1fr),
       gutter: 5.5pt,
@@ -291,7 +319,7 @@
   #colbreak()
 
   // --- 4. CORE HARDWARE COMPONENTS ---
-  #card(title: "4. Core Hardware Architecture", color: rgb("#059669"))[
+  #card(title: "4. Core Hardware Architecture", color: rgb("#059669"), icon: icon-cpu(color: rgb("#059669")))[
     #grid(
       columns: (auto, 1fr),
       gutter: 6.5pt,
@@ -313,7 +341,7 @@
   ]
 
   // --- 5. TYPES & APPLICATIONS ---
-  #card(title: "5. Robot Types & Applications", color: rgb("#7c3aed"))[
+  #card(title: "5. Robot Types & Applications", color: rgb("#7c3aed"), icon: icon-compass(color: rgb("#7c3aed")))[
     #highlight("Mechanical Architectures:", color: rgb("#6d28d9"))
     #v(1.5pt)
     - #highlight("Manipulators:", color: rgb("#0f172a")) Serial arms (Articulated, SCARA, Cartesian).
@@ -336,7 +364,7 @@
   #colbreak()
 
   // --- 6. PROGRAMMING METHODS ---
-  #card(title: "6. Robot Programming Methods", color: rgb("#2563eb"))[
+  #card(title: "6. Robot Programming Methods", color: rgb("#2563eb"), icon: icon-code(color: rgb("#2563eb")))[
     #badge("ON-LINE METHODS", color: rgb("#2563eb")) #text(size: 7.0pt, fill: rgb("#1d4ed8"))[(At the Robot)]
     #v(2.5pt)
     - #highlight("Teach Pendant:", color: rgb("#0f172a")) Handheld button box. Jog arm to waypoints & save; controller calculates PTP paths.
@@ -350,7 +378,7 @@
   ]
 
   // --- 7. PERFORMANCE METRICS ---
-  #card(title: "7. Performance Metrics", color: rgb("#db2777"))[
+  #card(title: "7. Performance Metrics", color: rgb("#db2777"), icon: icon-gauge(color: rgb("#db2777")))[
     - #highlight("Working Volume:", color: rgb("#0f172a")) 3D envelope reachable by end-effector.
     - #highlight("Speed & Accel:", color: rgb("#0f172a")) Motion rate; trade-off with precision & payload.
     - #highlight("Resolution:", color: rgb("#0f172a")) Smallest commandable incremental step.
@@ -375,7 +403,7 @@
 #columns(3, gutter: 8.5pt)[
 
   // --- 1. SENSING & TRANSDUCTION ---
-  #card(title: "1. Sensing & Transduction", color: rgb("#4f46e5"))[
+  #card(title: "1. Sensing & Transduction", color: rgb("#4f46e5"), icon: icon-zap(color: rgb("#4f46e5")))[
     - #highlight("Sensing:", color: rgb("#0f172a")) Collecting information about the world.
     - #highlight("Sensor:", color: rgb("#0f172a")) Device mapping physical/chemical phenomena to quantitative signals.
     - #highlight("Transduction Principle:", color: rgb("#4338ca")) Converting one energy form into another.
@@ -399,7 +427,7 @@
   ]
 
   // --- 2. SENSOR CLASSIFICATIONS ---
-  #card(title: "2. Sensor Classifications", color: rgb("#0284c7"))[
+  #card(title: "2. Sensor Classifications", color: rgb("#0284c7"), icon: icon-eye(color: rgb("#0284c7")))[
     #highlight("State Focus:", color: rgb("#0369a1"))
     #v(1.5pt)
     - #badge("Proprioceptive", color: rgb("#0284c7")) (Internal): Measures internal parameters (joint angle, wheel position, battery, tachometers/encoders/accelerometers).
@@ -421,7 +449,7 @@
   #colbreak()
 
   // --- 3. CONTACT & RESISTIVE SENSORS ---
-  #card(title: "3. Contact & Resistive Sensors", color: rgb("#d97706"))[
+  #card(title: "3. Contact & Resistive Sensors", color: rgb("#d97706"), icon: icon-activity(color: rgb("#d97706")))[
     #badge("A. FEELERS (TACTILE/CONTACT)", color: rgb("#d97706"))
     #v(1.5pt)
     - #highlight("Whiskers:", color: rgb("#0f172a")) Piano wire in metal hoop; deflection closes circuit; binary ($0"/"1$) output.
@@ -436,7 +464,7 @@
   ]
 
   // --- 4. CAPACITIVE VS. INDUCTIVE ---
-  #card(title: "4. Capacitive vs. Inductive Sensors", color: rgb("#059669"))[
+  #card(title: "4. Capacitive vs. Inductive Sensors", color: rgb("#059669"), icon: icon-zap(color: rgb("#059669")))[
     #rounded-table(
       columns: (1fr, 1fr),
       inset: 3.2pt,
@@ -473,7 +501,7 @@
   #colbreak()
 
   // --- 5. INFRARED (IR) SENSORS ---
-  #card(title: "5. Infrared (IR) Sensor Types", color: rgb("#7c3aed"))[
+  #card(title: "5. Infrared (IR) Sensor Types", color: rgb("#7c3aed"), icon: icon-radio(color: rgb("#7c3aed")))[
     #rounded-table(
       columns: (0.95fr, 1.15fr, 0.95fr),
       inset: 2.8pt,
@@ -529,7 +557,7 @@
   ]
 
   // --- 6. ULTRASONIC SENSORS & NOISE ---
-  #card(title: "6. Ultrasonic Sensors & Noise", color: rgb("#2563eb"))[
+  #card(title: "6. Ultrasonic Sensors & Noise", color: rgb("#2563eb"), icon: icon-activity(color: rgb("#2563eb")))[
     - #highlight("Principle:", color: rgb("#0f172a")) Ultrasound burst ($approx 50 "kHz"$). Time-of-Flight ($t$):
       $ D = v dot t quad ==> quad d = (v dot t) / 2 quad (v approx 340 "m/s in air") $
     - #highlight("Limitations:", color: rgb("#0f172a"))
@@ -539,7 +567,7 @@
   ]
 
   // --- 7. LASER RANGE FINDERS (LiDAR) & EXAM TIP ---
-  #card(title: "7. Laser Range Finders (LiDAR)", color: rgb("#db2777"))[
+  #card(title: "7. Laser Range Finders (LiDAR)", color: rgb("#db2777"), icon: icon-compass(color: rgb("#db2777")))[
     - #highlight("Performance:", color: rgb("#0f172a")) Long range ($2 "m" - 500 "m"$), high resolution ($10 "mm"$), fast scans ($13 - 40 "ms"$).
     - #highlight("Robustness:", color: rgb("#0f172a")) Narrow beam; immune to ambient light & specular reflections.
   ]
@@ -561,7 +589,7 @@
 #columns(3, gutter: 8.5pt)[
 
   // --- 1. AGENCY & MARR'S 3-LEVEL COMPUTATIONAL THEORY ---
-  #card(title: "1. Agency & Marr's 3-Level Theory", color: rgb("#4f46e5"))[
+  #card(title: "1. Agency & Marr's 3-Level Theory", color: rgb("#4f46e5"), icon: icon-bot(color: rgb("#4f46e5")))[
     - #highlight("Agency:", color: rgb("#0f172a")) Capacity of an entity (human or robot) to act intentionally, make choices, & exert control over actions and outcomes.
     - #highlight("David Marr's Framework:", color: rgb("#4338ca")) Analyzes information systems across 3 empirical levels:
 
@@ -585,7 +613,7 @@
   ]
 
   // --- 2. BIO-INSPIRED ROBOTIC MAPPINGS ---
-  #card(title: "2. Bio-Inspired Robotic Mappings", color: rgb("#0284c7"))[
+  #card(title: "2. Bio-Inspired Robotic Mappings", color: rgb("#0284c7"), icon: icon-compass(color: rgb("#0284c7")))[
     #rounded-table(
       columns: (0.9fr, 1.1fr, 1fr),
       inset: 2.5pt,
@@ -606,7 +634,7 @@
   #colbreak()
 
   // --- 3. CLASSIFICATIONS OF BEHAVIOR ---
-  #card(title: "3. Classifications of Behavior", color: rgb("#d97706"))[
+  #card(title: "3. Classifications of Behavior", color: rgb("#d97706"), icon: icon-zap(color: rgb("#d97706")))[
     - #highlight("Behavior Definition:", color: rgb("#0f172a")) Direct mapping of sensory inputs to motor actions to accomplish a task.
 
     #v(2.5pt)
@@ -631,7 +659,7 @@
   #colbreak()
 
   // --- 4. SCHEMA THEORY & OOP ---
-  #card(title: "4. Schema Theory & OOP Robotics", color: rgb("#7c3aed"))[
+  #card(title: "4. Schema Theory & OOP Robotics", color: rgb("#7c3aed"), icon: icon-layers(color: rgb("#7c3aed")))[
     - #highlight("Schema:", color: rgb("#0f172a")) Foundational OOP template used for the *Reactive Layer* of autonomous robots.
     - #highlight("Components of a Behavior Schema:", color: rgb("#6d28d9"))
       - #badge("Perceptual Schema", color: rgb("#0284c7")) Sensory feature extraction, threshold filtering & stimulus delays.
@@ -640,7 +668,7 @@
   ]
 
   // --- 5. VECTOR-BASED ACTION & S-R NOTATION ---
-  #card(title: "5. Vector Action & S-R Notation", color: rgb("#2563eb"))[
+  #card(title: "5. Vector Action & S-R Notation", color: rgb("#2563eb"), icon: icon-compass(color: rgb("#2563eb")))[
     #highlight("Mathematical Formulations:", color: rgb("#1d4ed8"))
     $ {B : S arrow.r R} quad "or" quad B[S] = R $
     - $S$: Perceptual function converting raw sensor feeds to *percept*.
@@ -671,7 +699,7 @@
 #columns(3, gutter: 8.5pt)[
 
   // --- 1. EV3 HARDWARE ARCHITECTURE ---
-  #card(title: "1. LEGO Mindstorms EV3 Architecture", color: rgb("#4f46e5"))[
+  #card(title: "1. LEGO Mindstorms EV3 Architecture", color: rgb("#4f46e5"), icon: icon-cpu(color: rgb("#4f46e5")))[
     - #highlight("Processing Unit:", color: rgb("#0f172a")) ARM9 @ $300 "MHz"$, $16 "MB"$ Flash, $64 "MB"$ RAM.
     - #highlight("Operating System:", color: rgb("#0f172a")) Embedded Linux-based OS.
     - #highlight("Sensor Ports (1-4):", color: rgb("#4338ca")) $4$ Input ports supporting Analog & high-speed Digital UART up to $460.8 "kbit/s"$.
@@ -684,7 +712,7 @@
   ]
 
   // --- 2. EVOLUTION OF LEGO ROBOTICS ---
-  #card(title: "2. Platform Generations & Modules", color: rgb("#0284c7"))[
+  #card(title: "2. Platform Generations & Modules", color: rgb("#0284c7"), icon: icon-layers(color: rgb("#0284c7")))[
     #rounded-table(
       columns: (0.8fr, 0.9fr, 1.3fr),
       inset: 2.6pt,
@@ -707,7 +735,7 @@
   #colbreak()
 
   // --- 3. STEP 1: AVOID COLLISION ---
-  #card(title: "3. Step 1: Avoid Collision (Reflex)", color: rgb("#d97706"))[
+  #card(title: "3. Step 1: Avoid Collision (Reflex)", color: rgb("#d97706"), icon: icon-zap(color: rgb("#d97706")))[
     #badge("PURE REFLEXIVE BEHAVIOR", color: rgb("#dc2626"))
     #v(1.5pt)
     - #highlight("Objective:", color: rgb("#0f172a")) Move continuously; instantly back up and pivot when a physical impact occurs.
@@ -745,7 +773,7 @@
   ]
 
   // --- 4. STEP 2: LAYERED OBSTACLE AVOIDANCE ---
-  #card(title: "4. Step 2: Collision + Obstacle Avoidance", color: rgb("#059669"))[
+  #card(title: "4. Step 2: Collision + Obstacle Avoidance", color: rgb("#059669"), icon: icon-shield(color: rgb("#059669")))[
     #badge("HIERARCHICAL PRIORITY ARBITRATION", color: rgb("#059669"))
     #v(1.5pt)
     - Combines contact (Touch) and non-contact (Proximity/Force) into a 2-tier reactive hierarchy:
@@ -796,7 +824,7 @@
   #colbreak()
 
   // --- 5. STEP 3A: 1-SENSOR LINE FOLLOWING ---
-  #card(title: "5. Step 3a: 1-Sensor Line Following", color: rgb("#7c3aed"))[
+  #card(title: "5. Step 3a: 1-Sensor Line Following", color: rgb("#7c3aed"), icon: icon-activity(color: rgb("#7c3aed")))[
     #badge("BANG-BANG / EDGE TRACKING", color: rgb("#7c3aed"))
     #v(1.5pt)
     - Tracks the #highlight("boundary edge", color: rgb("#0f172a")) between light and dark surfaces using 1 photo/color sensor.
@@ -835,7 +863,7 @@
   ]
 
   // --- 6. BEHAVIORAL PATTERNS SUMMARY ---
-  #card(title: "6. Reactive Control Summary", color: rgb("#2563eb"))[
+  #card(title: "6. Reactive Control Summary", color: rgb("#2563eb"), icon: icon-code(color: rgb("#2563eb")))[
     #rounded-table(
       columns: (0.9fr, 1fr, 1.2fr),
       inset: 2.6pt,
