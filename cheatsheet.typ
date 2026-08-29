@@ -92,7 +92,7 @@
   width: 100%,
   fill: color.lighten(94%),
   radius: 4.0pt,
-  inset: (x: 5.5pt, y: 4.0pt),
+  inset: (x: 5.5pt, y: 3.8pt),
   [
     #grid(
       columns: (1fr, auto),
@@ -668,7 +668,7 @@
       #grid(
         columns: (auto, 1fr),
         gutter: 4.5pt,
-        row-gutter: 3.5pt,
+        row-gutter: 3.0pt,
         align: (left + top, left + top),
         badge("Reflex", color: rgb("#dc2626")),
         [Lasts *only during stimulus* (knee-jerk, pupil reflex).],
@@ -676,9 +676,7 @@
         [
           *Directional steering* relative to stimulus: \
           #text(size: 6.8pt, fill: rgb("#475569"))[
-            • _Tropotaxis:_ Sea turtles to moonlit water \
-            • _- Phototaxis:_ Earthworms away from light \
-            • _+ Rheotaxis:_ Salmon swimming upstream
+            • _Tropotaxis:_ Turtles to moonlight | _- Phototaxis:_ Worms away from light | _+ Rheotaxis:_ Salmon upstream
           ]
         ],
         badge("FAP", color: rgb("#7c3aed")),
@@ -686,21 +684,85 @@
       )
     ]
 
-    #v(3pt)
+    #v(2.5pt)
     #mini-block(title: "2. Reactive Behaviors", badge-txt: "Muscle Memory", color: rgb("#d97706"))[
-      Learned skills consolidated to execute automatically without conscious processing (e.g. riding a bicycle).
+      Learned skills consolidated to execute automatically without conscious thought (e.g. riding a bicycle).
     ]
 
-    #v(3pt)
+    #v(2.5pt)
     #mini-block(title: "3. Conscious Behaviors", badge-txt: "Deliberative", color: rgb("#2563eb"))[
       Deliberate, goal-directed planning coordinating multiple sub-behaviors (e.g. puzzle solving, kit assembly).
     ]
   ]
 
+  // --- 4. BEHAVIORAL SCHEMA ARCHITECTURE DIAGRAM ---
+  #card(title: "4. Behavioral Schema Architecture", color: rgb("#7c3aed"), icon-name: "layers")[
+    #block(
+      width: 100%,
+      fill: rgb("#f5f3ff"),
+      radius: 4.5pt,
+      inset: (x: 5.5pt, y: 4.0pt),
+      [
+        #align(center)[
+          #text(weight: "bold", size: 7.0pt, fill: rgb("#6d28d9"))[Behavioral Schema: ]
+          #badge("feed", color: rgb("#7c3aed"))
+        ]
+        #v(2.5pt)
+        #grid(
+          columns: (auto, 1fr, auto, 1fr, auto),
+          gutter: 3.0pt,
+          align: horizon + center,
+          [
+            #text(size: 6.0pt, weight: "bold", fill: rgb("#475569"))[eyes] \
+            #text(size: 7.5pt, fill: rgb("#64748b"))[$arrow.r.double$]
+          ],
+          [
+            #block(
+              width: 100%,
+              fill: rgb("#ede9fe"),
+              radius: 3.5pt,
+              inset: (x: 3pt, y: 3.5pt),
+              align(center)[
+                #badge("Perceptual Schema", color: rgb("#0284c7")) \
+                #v(1.5pt)
+                #text(weight: "black", size: 6.8pt, fill: rgb("#1e1b4b"))["small, moving"] \
+                #text(size: 5.5pt, fill: rgb("#64748b"))[(feature filter)]
+              ]
+            )
+          ],
+          [
+            #text(size: 5.5pt, weight: "bold", fill: rgb("#7c3aed"))[location,\ intensity] \
+            #text(size: 7.5pt, fill: rgb("#7c3aed"))[$arrow.r.double$]
+          ],
+          [
+            #block(
+              width: 100%,
+              fill: rgb("#ede9fe"),
+              radius: 3.5pt,
+              inset: (x: 3pt, y: 3.5pt),
+              align(center)[
+                #badge("Motor Schema", color: rgb("#059669")) \
+                #v(1.5pt)
+                #text(weight: "black", size: 6.8pt, fill: rgb("#1e1b4b"))["snap"] \
+                #text(size: 5.5pt, fill: rgb("#64748b"))[(action calc)]
+              ]
+            )
+          ],
+          [
+            #text(size: 6.0pt, weight: "bold", fill: rgb("#475569"))[vector] \
+            #text(size: 7.5pt, fill: rgb("#64748b"))[$arrow.r.double$]
+          ]
+        )
+      ]
+    )
+    #v(2pt)
+    - #highlight("Frog Case Study:", color: rgb("#6d28d9")) Raw visual stimulus ($"eyes"$) is filtered into a clean percept ($"small, moving"$), passing coordinate $(x, y)$ and intensity to the motor schema to generate a tongue *snap vector*.
+  ]
+
   #colbreak()
 
-  // --- 4. SCHEMA THEORY & OOP ---
-  #card(title: "4. Schema Theory & OOP Robotics", color: rgb("#7c3aed"), icon-name: "layers")[
+  // --- 5. SCHEMA THEORY & OOP ROBOTICS ---
+  #card(title: "5. Schema Theory & OOP Robotics", color: rgb("#7c3aed"), icon-name: "layers")[
     - #highlight("Schema:", color: rgb("#0f172a")) Foundational OOP template used for the *Reactive Layer* of autonomous robots.
     - #highlight("Components of a Behavior Schema:", color: rgb("#6d28d9"))
       - #badge("Perceptual Schema", color: rgb("#0284c7")) Sensory feature extraction, threshold filtering & stimulus delays.
@@ -708,8 +770,8 @@
     - #highlight("Schema Instantiation (SI):", color: rgb("#0f172a")) Creating a concrete runtime instance from a generic parameterized class template (e.g. applying specific handlebar height & seat position to a bike-riding schema).
   ]
 
-  // --- 5. VECTOR-BASED ACTION & S-R NOTATION ---
-  #card(title: "5. Vector Action & S-R Notation", color: rgb("#2563eb"), icon-name: "compass")[
+  // --- 6. VECTOR-BASED ACTION & S-R NOTATION ---
+  #card(title: "6. Vector Action & S-R Notation", color: rgb("#2563eb"), icon-name: "compass")[
     #highlight("Mathematical Formulations:", color: rgb("#1d4ed8"))
     $ {B : S arrow.r R} quad "or" quad B[S] = R $
     - $S$: Perceptual function converting raw sensor feeds to *percept*.
