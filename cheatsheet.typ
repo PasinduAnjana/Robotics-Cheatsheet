@@ -1308,46 +1308,10 @@
   #card(title: "1. Action-Perception & Ecological Approach", color: rgb("#4f46e5"), icon-name: "activity")[
     - #highlight("Action-Perception Cycle:", color: rgb("#4338ca")) Continuous closed feedback loop where perception guides actions, and actions alter the environment.
     
-    #v(2pt)
-    #block(
-      width: 100%,
-      fill: rgb("#f5f3ff"),
-      radius: 4pt,
-      inset: (x: 4.5pt, y: 4.0pt),
-      align(center)[
-        // Top: World
-        #badge("World", color: rgb("#0284c7"))
-        
-        #v(1.5pt)
-        #grid(
-          columns: (1.2fr, 0.2fr, 1.2fr),
-          align: horizon + center,
-          [
-            #align(center)[
-              #text(size: 5.2pt, fill: rgb("#475569"))[*Agent acts & modifies world*]\
-              #text(size: 8.5pt, fill: rgb("#64748b"))[$arrow.bl$]
-            ]
-          ],
-          [],
-          [
-            #align(center)[
-              #text(size: 8.5pt, fill: rgb("#64748b"))[$arrow.tl$]\
-              #text(size: 5.2pt, fill: rgb("#475569"))[*Samples / finds potential actions*]
-            ]
-          ]
-        )
-        #v(1.5pt)
-        #grid(
-          columns: (auto, 1fr, auto),
-          gutter: 2.5pt,
-          align: horizon + center,
-          badge("Cognitive Activity", color: rgb("#7c3aed")),
-          text(size: 5.1pt, fill: rgb("#4f46e5"), weight: "bold")[──── $"Directs what to look for"$ ────$arrow.r$],
-          badge("Perception", color: rgb("#059669"))
-        )
-      ]
-    )
-    #v(2pt)
+    #v(2.0pt)
+    #image("assets/action_perception_cycle.svg", width: 100%)
+    
+    #v(2.0pt)
     - #highlight("Gibson's Ecological Approach:", color: rgb("#0f172a"))
       - #badge("Core Tenet", color: rgb("#4f46e5")) #text(size: 6.8pt, style: "italic")["... the world is its own best representation."]
       - Perception evolved *only to support survival actions* in an ecological niche, not to build abstract 3D maps.

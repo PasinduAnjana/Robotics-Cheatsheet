@@ -1,0 +1,39 @@
+<svg viewBox="0 0 400 160" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-indigo" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4f46e5" />
+    </marker>
+  </defs>
+
+  <!-- Background container -->
+  <rect x="0" y="0" width="400" height="160" rx="6" fill="#f5f3ff" />
+
+  <!-- Top Node: World -->
+  <rect x="145" y="8" width="110" height="28" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="200" y="27" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0369a1">World</text>
+
+  <!-- Bottom Left Node: Cognitive Activity -->
+  <rect x="10" y="122" width="130" height="30" rx="5" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="75" y="142" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#5b21b6">Cognitive Activity</text>
+
+  <!-- Bottom Right Node: Perception -->
+  <rect x="260" y="122" width="130" height="30" rx="5" fill="#ecfdf5" stroke="#059669" stroke-width="1.2"/>
+  <text x="325" y="142" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#065f46">Perception</text>
+
+  <!-- Arrow 1: World -> Cognitive Activity (Agent acts & modifies world) -->
+  <path d="M 165 40 L 98 116" fill="none" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="100" y="68" text-anchor="end" font-size="9" font-weight="bold" fill="#334155">Agent acts &amp;</text>
+  <text x="100" y="80" text-anchor="end" font-size="9" font-weight="bold" fill="#334155">modifies world</text>
+
+  <!-- Arrow 2: Cognitive Activity -> Perception (Directs what to look for) -->
+  <path d="M 146 137 L 252 137" fill="none" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arrow-indigo)"/>
+  <text x="199" y="130" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#4338ca">Directs what to look for</text>
+
+  <!-- Arrow 3: Perception -> World (Agent samples, finds potential actions) -->
+  <path d="M 302 116 L 235 40" fill="none" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="300" y="68" text-anchor="start" font-size="9" font-weight="bold" fill="#334155">Agent samples, finds</text>
+  <text x="300" y="80" text-anchor="start" font-size="9" font-weight="bold" fill="#334155">potential actions</text>
+</svg>
