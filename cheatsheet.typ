@@ -88,6 +88,31 @@
   v(3.5pt)
 }
 
+#let mini-block(title: "", badge-txt: "", color: rgb("#dc2626"), body) = block(
+  width: 100%,
+  fill: color.lighten(94%),
+  radius: 4.0pt,
+  inset: (x: 5.5pt, y: 4.0pt),
+  [
+    #grid(
+      columns: (1fr, auto),
+      align: (left + horizon, right + horizon),
+      text(fill: color.darken(35%), weight: "bold", size: 7.2pt)[#title],
+      if badge-txt != "" {
+        box(
+          fill: color.lighten(84%),
+          stroke: none,
+          radius: 3pt,
+          inset: (x: 3.5pt, y: 1.2pt),
+          text(fill: color.darken(40%), weight: "bold", size: 6.2pt)[#badge-txt]
+        )
+      }
+    )
+    #v(2.0pt)
+    #body
+  ]
+)
+
 #let badge(text-content, color: rgb("#4f46e5")) = {
   box(
     fill: color.lighten(88%),
@@ -618,25 +643,40 @@
 
   // --- 3. CLASSIFICATIONS OF BEHAVIOR ---
   #card(title: "3. Classifications of Behavior", color: rgb("#d97706"), icon-name: "zap")[
-    - #highlight("Behavior Definition:", color: rgb("#0f172a")) Direct mapping of sensory inputs to motor actions to accomplish a task.
-
-    #v(2.5pt)
-    #badge("1. REFLEXIVE (STIMULUS-RESPONSE / S-R)", color: rgb("#dc2626"))
-    - Hardwired neural/electronic circuits for fastest execution:
-      - #highlight("Reflexes:", color: rgb("#0f172a")) Response lasts *only as long as stimulus* & is proportional to intensity (e.g. knee-jerk, pupillary light reflex).
-      - #highlight("Taxes (Taxis):", color: rgb("#0f172a")) Directional orientation / movement relative to stimulus:
-        - _Tropotaxis:_ Sea turtles navigating toward moonlit ocean.
-        - _Negative Phototaxis:_ Earthworms crawling away from light.
-        - _Positive Rheotaxis:_ Salmon swimming upstream against flow.
-      - #highlight("Fixed-Action Patterns (FAP):", color: rgb("#0f172a")) Response *persists longer* than triggering stimulus (e.g. spider web weaving, squirrels caching nuts, duckling imprinting).
+    #highlight("Behavior Definition:", color: rgb("#b45309")) Direct mapping of sensory inputs to motor actions to achieve a task.
 
     #v(3pt)
-    #badge("2. REACTIVE BEHAVIORS", color: rgb("#d97706"))
-    - Learned skills executed automatically without conscious processing (e.g. riding a bicycle).
+    #mini-block(title: "1. Reflexive (Stimulus-Response)", badge-txt: "Hardwired / Fastest", color: rgb("#dc2626"))[
+      #grid(
+        columns: (auto, 1fr),
+        gutter: 4.5pt,
+        row-gutter: 3.5pt,
+        align: (left + top, left + top),
+        badge("Reflex", color: rgb("#dc2626")),
+        [Lasts *only during stimulus* (knee-jerk, pupil reflex).],
+        badge("Taxis", color: rgb("#d97706")),
+        [
+          *Directional steering* relative to stimulus: \
+          #text(size: 6.8pt, fill: rgb("#475569"))[
+            • _Tropotaxis:_ Sea turtles to moonlit water \
+            • _- Phototaxis:_ Earthworms away from light \
+            • _+ Rheotaxis:_ Salmon swimming upstream
+          ]
+        ],
+        badge("FAP", color: rgb("#7c3aed")),
+        [Response *persists longer* than stimulus (spider web, nut caching, duckling imprinting).]
+      )
+    ]
 
     #v(3pt)
-    #badge("3. CONSCIOUS BEHAVIORS", color: rgb("#2563eb"))
-    - Deliberate, planned actions coordinating multiple sub-behaviors.
+    #mini-block(title: "2. Reactive Behaviors", badge-txt: "Muscle Memory", color: rgb("#d97706"))[
+      Learned skills consolidated to execute automatically without conscious processing (e.g. riding a bicycle).
+    ]
+
+    #v(3pt)
+    #mini-block(title: "3. Conscious Behaviors", badge-txt: "Deliberative", color: rgb("#2563eb"))[
+      Deliberate, goal-directed planning coordinating multiple sub-behaviors (e.g. puzzle solving, kit assembly).
+    ]
   ]
 
   #colbreak()
