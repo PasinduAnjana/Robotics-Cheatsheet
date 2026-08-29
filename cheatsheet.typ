@@ -643,9 +643,27 @@
 
   // --- 3. CLASSIFICATIONS OF BEHAVIOR ---
   #card(title: "3. Classifications of Behavior", color: rgb("#d97706"), icon-name: "zap")[
-    #highlight("Behavior Definition:", color: rgb("#b45309")) Direct mapping of sensory inputs to motor actions to achieve a task.
+    #block(
+      width: 100%,
+      fill: rgb("#fef3c7"),
+      radius: 4.0pt,
+      inset: (x: 5.5pt, y: 3.5pt),
+      [
+        #grid(
+          columns: (auto, 1fr),
+          gutter: 4.5pt,
+          align: (left + horizon, left + horizon),
+          icon("zap", color: rgb("#d97706"), size: 8.5pt),
+          [
+            #text(weight: "black", size: 6.8pt, fill: rgb("#92400e"))[BEHAVIOR DEFINITION:]
+            #h(2pt)
+            #text(size: 7.1pt, fill: rgb("#78350f"))[Direct mathematical mapping of *sensory inputs* to *motor actions* to achieve a task.]
+          ]
+        )
+      ]
+    )
 
-    #v(3pt)
+    #v(2.5pt)
     #mini-block(title: "1. Reflexive (Stimulus-Response)", badge-txt: "Hardwired / Fastest", color: rgb("#dc2626"))[
       #grid(
         columns: (auto, 1fr),
