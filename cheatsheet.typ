@@ -553,132 +553,110 @@
 #pagebreak()
 
 // =========================================================
-// PAGE 3: LECTURE 03 — AGENCY, BEHAVIORS & SCHEMA THEORY
+// PAGE 3: LECTURE 03 — BEHAVIORS & COMPUTATIONAL THEORY
 // =========================================================
 
-#header-banner("03", "Agency, Behaviors & Schema Theory", "AGENCY & CONTROL")
+#header-banner("03", "Agency, Behaviors & Schema Theory", "AGENCY & BEHAVIORS")
 
 #columns(3, gutter: 8.5pt)[
 
-  // --- 1. AGENCY & MARR'S 3-LEVEL FRAMEWORK ---
-  #card(title: "1. Agency & Marr's 3-Level Framework", color: rgb("#6366f1"))[
-    - #highlight("Agency:", color: rgb("#ffffff")) Capacity of an entity to act intentionally, make choices, and exert control over actions and outcomes.
-    - #highlight("David Marr's Framework:", color: rgb("#a5b4fc")) Decomposes information-processing systems into 3 empirical layers:
+  // --- 1. AGENCY & MARR'S 3-LEVEL COMPUTATIONAL THEORY ---
+  #card(title: "1. Agency & Marr's 3-Level Theory", color: rgb("#6366f1"))[
+    - #highlight("Agency:", color: rgb("#ffffff")) Capacity of an entity (human or robot) to act intentionally, make choices, & exert control over actions and outcomes.
+    - #highlight("David Marr's Framework:", color: rgb("#a5b4fc")) Analyzes information systems across 3 empirical levels:
+
     #v(2pt)
-    + #highlight("Level 1: Computational (Theory):", color: rgb("#ffffff")) *What* is the agent doing & *Why*? Ultimate goal, mathematical theory & constraints.
-    + #highlight("Level 2: Algorithmic (Representation):", color: rgb("#ffffff")) *How* is the task processed? Input/output representations, transformations & planning.
-    + #highlight("Level 3: Implementational (Physical):", color: rgb("#ffffff")) *How* is it physically realized? Hardware/substrate (synapses/muscles vs. MCUs/actuators).
+    #rounded-table(
+      columns: (0.7fr, 0.9fr, 1.4fr),
+      inset: 2.6pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#1e1b4b") } else if calc.even(row) { rgb("#0d0d18") } else { rgb("#080811") },
+      align: top + left,
+      [#text(fill: rgb("#c7d2fe"), weight: "bold", size: 6.5pt)[Level]],
+      [#text(fill: rgb("#c7d2fe"), weight: "bold", size: 6.5pt)[Question / Focus]],
+      [#text(fill: rgb("#c7d2fe"), weight: "bold", size: 6.5pt)[Search & Rescue Robot Example]],
+      [*L1: Comp.*], [What goal / problem is solved?], [Locate trapped survivors in low-visibility],
+      [*L2: Algo.*], [What processes / IO represent it?], [Steer toward heat & $text("CO")_2$ gradients],
+      [*L3: Impl.*], [How physically realized in hardware?], [Angle vectors to heat centroids; wheel motors]
+    )
+
     #v(2.5pt)
-    #badge("CRUCIAL EXAM FACT", color: rgb("#f59e0b")) #text(size: 6.8pt, fill: rgb("#fef08a"))[L1 & L2 are universal to all agents; differences between biology & robots exist #underline[*only at Level 3*].]
+    #badge("KEY EXAM CONCEPT", color: rgb("#f59e0b")) #text(size: 6.7pt, fill: rgb("#fef08a"))[L1 & L2 are abstract & identical across biology/robots. Distinction appears #underline[*only at Level 3*].]
   ]
 
-  // --- 2. MOSQUITO VS SEARCH & RESCUE ---
-  #card(title: "2. Case Study: Mosquito vs. Robot", color: rgb("#06b6d4"))[
+  // --- 2. BIO-INSPIRED ROBOTIC MAPPINGS ---
+  #card(title: "2. Bio-Inspired Robotic Mappings", color: rgb("#06b6d4"))[
     #rounded-table(
-      columns: (0.75fr, 1.1fr, 1.15fr),
-      inset: 2.8pt,
+      columns: (0.9fr, 1.1fr, 1fr),
+      inset: 2.5pt,
       stroke: none,
       fill: (_, row) => if row == 0 { rgb("#082f49") } else if calc.even(row) { rgb("#0d0d18") } else { rgb("#070b12") },
       align: top + left,
-      [#text(fill: rgb("#38bdf8"), weight: "bold", size: 6.7pt)[Marr Level]],
-      [#text(fill: rgb("#38bdf8"), weight: "bold", size: 6.7pt)[Mosquito (Bio)]],
-      [#text(fill: rgb("#38bdf8"), weight: "bold", size: 6.7pt)[Search & Rescue (Robot)]],
-      [*L1: Comp.*], [Locate warm host for blood meal], [Locate human survivors in disaster],
-      [*L2: Algo.*], [Gradient ascent on heat & $text("CO")_2$], [Steer based on thermal & $text("CO")_2$ inputs],
-      [*L3: Impl.*], [Olfactory pits, flight muscles], [Thermopile, $text("CO")_2$ sensor, MCUs, wheels]
-    )
-  ]
-
-  // --- 3. BIO-INSPIRATION TO ROBOTIC TASKS ---
-  #card(title: "3. Biological Inspiration Mappings", color: rgb("#059669"))[
-    #rounded-table(
-      columns: (0.85fr, 1fr, 1.15fr),
-      inset: 2.6pt,
-      stroke: none,
-      fill: (_, row) => if row == 0 { rgb("#064e3b") } else if calc.even(row) { rgb("#0d0d18") } else { rgb("#06120e") },
-      align: top + left,
-      [#text(fill: rgb("#6ee7b7"), weight: "bold", size: 6.6pt)[Animal / Task]],
-      [#text(fill: rgb("#6ee7b7"), weight: "bold", size: 6.6pt)[L2: Algorithm]],
-      [#text(fill: rgb("#6ee7b7"), weight: "bold", size: 6.6pt)[L3: Implementation]],
-      [*Bat* (Avoidance)], [Echo delay ranging], [Ultrasonic sensors & CPU],
-      [*Ant* (Pathfind)], [Ant Colony Optim. (ACO)], [Digital pheromones/maps],
-      [*Bird* (Flocking)], [Reynolds Boids (Cohesion, Alignment, Separation)], [UAV drones + local wireless communication],
-      [*Frog* (Grasp)], [Motion track + reflex], [High-speed camera + arm],
-      [*Cuttlefish*], [Spatial pattern mapping], [E-Skin & vision cameras]
+      [#text(fill: rgb("#38bdf8"), weight: "bold", size: 6.5pt)[Biological Model]],
+      [#text(fill: rgb("#38bdf8"), weight: "bold", size: 6.5pt)[Robotic Mapping]],
+      [#text(fill: rgb("#38bdf8"), weight: "bold", size: 6.5pt)[Mechanism]],
+      [*Bat Echolocation*], [Obstacle Avoidance], [Echo delay detection (ultrasonic)],
+      [*Ant Foraging*], [Swarm Pathfinding], [Ant Colony Optim. (ACO), digital pheromones],
+      [*Bird Flocking*], [Coordinated Drone Swarm], [Reynolds Boids: alignment, cohesion, separation],
+      [*Frog Tongue*], [Fast Grasping Arm], [High-speed camera + snatch reflex],
+      [*Cuttlefish*], [Adaptive Camouflage], [Pattern mapping onto E-skin]
     )
   ]
 
   #colbreak()
 
-  // --- 4. DEFINITION OF ROBOTIC BEHAVIOR ---
-  #card(title: "4. Definition of Robotic Behavior", color: rgb("#10b981"))[
-    - #highlight("Behavior:", color: rgb("#ffffff")) Mathematical mapping of sensory inputs to motor action patterns to achieve a task.
-    - #highlight("Action-Perception Cycle:", color: rgb("#34d399")) Continuous loop where perception drives action, action alters environment, and environment feeds perception.
-    - #highlight("Gibson's Ecological Approach:", color: rgb("#34d399")) Perception exists solely to support action. *"The world is its own best representation."*
-    - #highlight("Affordances:", color: rgb("#ffffff")) Directly perceivable action possibilities (e.g. *climbability*, *sitability*) without complex mental reconstruction.
+  // --- 3. CLASSIFICATIONS OF BEHAVIOR ---
+  #card(title: "3. Classifications of Behavior", color: rgb("#f59e0b"))[
+    - #highlight("Behavior Definition:", color: rgb("#ffffff")) Direct mapping of sensory inputs to motor actions to accomplish a task.
+
+    #v(2.5pt)
+    #badge("1. REFLEXIVE (STIMULUS-RESPONSE / S-R)", color: rgb("#ef4444"))
+    - Hardwired neural/electronic circuits for fastest execution:
+      - #highlight("Reflexes:", color: rgb("#ffffff")) Response lasts *only as long as stimulus* & is proportional to intensity (e.g. knee-jerk, pupillary light reflex).
+      - #highlight("Taxes (Taxis):", color: rgb("#ffffff")) Directional orientation / movement relative to stimulus:
+        - _Tropotaxis:_ Sea turtles navigating toward moonlit ocean.
+        - _Negative Phototaxis:_ Earthworms crawling away from light.
+        - _Positive Rheotaxis:_ Salmon swimming upstream against flow.
+      - #highlight("Fixed-Action Patterns (FAP):", color: rgb("#ffffff")) Response *persists longer* than triggering stimulus (e.g. spider web weaving, squirrels caching nuts, duckling imprinting).
 
     #v(3pt)
-    #highlight("Mathematical Formulations:", color: rgb("#34d399"))
-    - #highlight("Stimulus-Response (S-R):", color: rgb("#ffffff")) $ {B : S arrow.r R} $
-    - #highlight("Schema Notation:", color: rgb("#ffffff")) $ B[S] = R $
-      - $S["Sensor Data"] arrow.r "Percept"$ (filters raw noise into percept).
-      - $R["Percept"] arrow.r "Action"$ (maps percept to motor command).
-  ]
+    #badge("2. REACTIVE BEHAVIORS", color: rgb("#f59e0b"))
+    - Learned skills executed automatically without conscious processing (e.g. riding a bicycle).
 
-  // --- 5. BEHAVIOR TAXONOMIES ---
-  #card(title: "5. Taxonomies of Behaviors", color: rgb("#f59e0b"))[
-    #badge("1. REFLEXIVE (S-R)", color: rgb("#ef4444"))
-    - Hardwired, direct neural/electronic connection for fastest execution.
-    - #highlight("Fixed-Action Pattern (FAP):", color: rgb("#ffffff")) Response continues for *longer duration* than the stimulus (e.g. web spinning, courtship dance, nut burying, duckling imprinting).
-    - #highlight("Taxis:", color: rgb("#ffffff")) Orienting reflex relative to stimulus (e.g. *phototaxis* turning towards light). _Can co-occur with FAP._
-
-    #v(3.5pt)
-    #badge("2. REACTIVE (LEARNED / MUSCLE MEMORY)", color: rgb("#f59e0b"))
-    - Learned through repetition and consolidated into automatic execution without conscious thought (e.g. riding bike, skiing).
-    - _Conscious overthinking degrades reactive performance._
-
-    #v(3.5pt)
-    #badge("3. CONSCIOUS (DELIBERATIVE)", color: rgb("#3b82f6"))
-    - Goal-directed, high cognition, planning, reasoning, puzzle solving.
+    #v(3pt)
+    #badge("3. CONSCIOUS BEHAVIORS", color: rgb("#3b82f6"))
+    - Deliberate, planned actions coordinating multiple sub-behaviors.
   ]
 
   #colbreak()
 
-  // --- 6. SCHEMA THEORY & OOP ---
-  #card(title: "6. Schema Theory in Robotics (OOP)", color: rgb("#a855f7"))[
-    - #highlight("Schema Theory:", color: rgb("#ffffff")) Translates animal behavior into reusable *Object-Oriented Programming (OOP)* classes.
-    - Foundation of the #highlight("Reactive Layer", color: rgb("#c084fc")) in hybrid architectures.
-    - #highlight("Anatomy of a Schema Class:", color: rgb("#ffffff"))
-      + *Schema-Specific Data* $arrow.r$ Member Variables (models, states).
-      + *Procedural Knowledge* $arrow.r$ Methods (computational algorithms).
-    - #highlight("Schema Instantiation (SI):", color: rgb("#ffffff")) Generic template class parameterized with runtime values (e.g. bike seat height $arrow.r$ active SI object).
-    - Primitive behavior = #badge("1 Perceptual Schema", color: rgb("#0284c7")) + #badge("1 Motor Schema", color: rgb("#059669")).
+  // --- 4. SCHEMA THEORY & OOP ---
+  #card(title: "4. Schema Theory & OOP Robotics", color: rgb("#a855f7"))[
+    - #highlight("Schema:", color: rgb("#ffffff")) Foundational OOP template used for the *Reactive Layer* of autonomous robots.
+    - #highlight("Components of a Behavior Schema:", color: rgb("#c084fc"))
+      - #badge("Perceptual Schema", color: rgb("#0284c7")) Sensory feature extraction, threshold filtering & stimulus delays.
+      - #badge("Motor Schema", color: rgb("#059669")) Computational procedure to produce physical action/movement vector.
+    - #highlight("Schema Instantiation (SI):", color: rgb("#ffffff")) Creating a concrete runtime instance from a generic parameterized class template (e.g. applying specific handlebar height & seat position to a bike-riding schema).
   ]
 
-  // --- 7. VECTOR FIELDS & FROG TAXIS ---
-  #card(title: "7. Vector Fields & Frog Snapping", color: rgb("#3b82f6"))[
-    - #highlight("Frog Algorithmic Schemas:", color: rgb("#ffffff"))
-      - *Feed Schema:* Small moving blob $arrow.r$ Snap tongue.
-      - *Flee Schema:* Large moving blob $arrow.r$ Runaway jump.
-    - #highlight("Level 3 Vector Fields:", color: rgb("#ffffff"))
-      - Stimulus mapped as vector $(m, theta)$.
-      - *Distance-Intensity Scaling:* Weaker stimulus (far away fly) generates a *harder snap vector*.
-      - *Vector Summation ($Sigma$):* Left eye vector ($v_L$) + Right eye vector ($v_R$) $==> V_("resultant") = v_L + v_R$ for optimal tongue trajectory.
-  ]
+  // --- 5. VECTOR-BASED ACTION & S-R NOTATION ---
+  #card(title: "5. Vector Action & S-R Notation", color: rgb("#3b82f6"))[
+    #highlight("Mathematical Formulations:", color: rgb("#60a5fa"))
+    $ {B : S arrow.r R} quad "or" quad B[S] = R $
+    - $S$: Perceptual function converting raw sensor feeds to *percept*.
+    - $R$: Motor function converting percept into physical *action*.
+    - $B$: Overarching behavioral system.
 
-  // --- 8. INNATE RELEASING MECHANISMS (IRM) ---
-  #card(title: "8. Innate Releasing Mechanisms (IRM)", color: rgb("#ec4899"))[
-    - #highlight("Releasers as Boolean Latches:", color: rgb("#ffffff"))
-      - `PRESENT` (true) $arrow.r$ Behavior executes.
-      - `NOT_PRESENT` (false) $arrow.r$ Gated entirely (no default output).
-    - #highlight("Compound Releasers:", color: rgb("#ffffff")) Condition combines *External Stimuli* (food sensed) $+$ *Internal State / Motivation* (hunger level / battery).
-    - #highlight("Implicit Chaining:", color: rgb("#ffffff")) Linking schemas via releaser states allows complex sequences to emerge without a centralized planner.
+    #v(2.5pt)
+    #highlight("Vector Field Combination:", color: rgb("#60a5fa"))
+    - Directional stimuli (e.g. left & right eyes) are converted to vectors and combined via #highlight("Vector Summation", color: rgb("#ffffff")) ($Sigma$) to determine the resultant motor command:
+      $ V_("resultant") = v_("left") + v_("right") $
   ]
 
   #tip-box(title: "EXAM HIGHLIGHTS: LECTURE 03")[
-    *Marr's Level 3:* Only hardware/biology separates humans & robots; L1/L2 are universal. \
-    *FAP vs. Taxis:* FAP action outlasts the stimulus duration; Taxis is directional steering. \
-    *IRM Gating:* When releaser is false, behavior is shut off with *no default output*.
+    *Reflex vs. FAP Duration:* Reflex stops as soon as stimulus stops; FAP continues for longer duration. \
+    *Taxis Examples:* Positive Rheotaxis (salmon upstream), Tropotaxis (sea turtles to moonlight), Negative Phototaxis (earthworms). \
+    *Marr's Level 3:* L1 & L2 are identical in biology & robotics; differences emerge *only at Level 3*.
   ]
 ]
 
