@@ -773,15 +773,31 @@
   // --- 6. VECTOR-BASED ACTION & S-R NOTATION ---
   #card(title: "6. Vector Action & S-R Notation", color: rgb("#2563eb"), icon-name: "compass")[
     #highlight("Mathematical Formulations:", color: rgb("#1d4ed8"))
-    $ {B : S arrow.r R} quad "or" quad B[S] = R $
+    #v(2pt)
+    #block(
+      width: 100%,
+      fill: rgb("#e0e7ff"),
+      radius: 3.5pt,
+      inset: (x: 4pt, y: 2.8pt),
+      align(center)[#text(fill: rgb("#312e81"), weight: "bold", size: 8.2pt)[$ {B : S arrow.r R} quad "or" quad B[S] = R $]]
+    )
+    #v(2pt)
     - $S$: Perceptual function converting raw sensor feeds to *percept*.
     - $R$: Motor function converting percept into physical *action*.
     - $B$: Overarching behavioral system.
 
-    #v(2.5pt)
+    #v(3pt)
     #highlight("Vector Field Combination:", color: rgb("#1d4ed8"))
-    - Directional stimuli (e.g. left & right eyes) are converted to vectors and combined via #highlight("Vector Summation", color: rgb("#0f172a")) ($Sigma$) to determine the resultant motor command:
-      $ V_("resultant") = v_("left") + v_("right") $
+    #v(1.5pt)
+    - Directional stimuli (e.g. left & right eyes) combine via #highlight("Vector Summation", color: rgb("#0f172a")) ($Sigma$):
+    #v(1.5pt)
+    #block(
+      width: 100%,
+      fill: rgb("#e0e7ff"),
+      radius: 3.5pt,
+      inset: (x: 4pt, y: 2.8pt),
+      align(center)[#text(fill: rgb("#312e81"), weight: "bold", size: 8.2pt)[$ V_("resultant") = v_("left") + v_("right") $]]
+    )
   ]
 
   #tip-box(title: "EXAM HIGHLIGHTS: LECTURE 03")[
