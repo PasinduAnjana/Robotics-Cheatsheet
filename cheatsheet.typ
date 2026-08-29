@@ -1309,22 +1309,41 @@
     - #highlight("Action-Perception Cycle:", color: rgb("#4338ca")) Continuous closed feedback loop where perception guides actions, and actions alter the environment.
     
     #v(2pt)
-    // Visual Cycle Diagram
     #block(
       width: 100%,
       fill: rgb("#f5f3ff"),
-      radius: 3.5pt,
-      inset: (x: 4pt, y: 3.5pt),
+      radius: 4pt,
+      inset: (x: 4.5pt, y: 4.0pt),
       align(center)[
+        // Top: World
+        #badge("World", color: rgb("#0284c7"))
+        
+        #v(1.5pt)
         #grid(
-          columns: (1fr, auto, 1fr, auto, 1fr),
-          gutter: 3pt,
+          columns: (1.2fr, 0.2fr, 1.2fr),
           align: horizon + center,
-          flow-node("World", sub: "Environment", color: rgb("#0284c7")),
-          text(fill: rgb("#94a3b8"), size: 7.5pt)[$arrow.r$],
-          flow-node("Perception", sub: "Direct / Model", color: rgb("#7c3aed")),
-          text(fill: rgb("#94a3b8"), size: 7.5pt)[$arrow.r$],
-          flow-node("Action", sub: "Motor Output", color: rgb("#059669"))
+          [
+            #align(center)[
+              #text(size: 5.2pt, fill: rgb("#475569"))[*Agent acts & modifies world*]\
+              #text(size: 8.5pt, fill: rgb("#64748b"))[$arrow.bl$]
+            ]
+          ],
+          [],
+          [
+            #align(center)[
+              #text(size: 8.5pt, fill: rgb("#64748b"))[$arrow.tl$]\
+              #text(size: 5.2pt, fill: rgb("#475569"))[*Samples / finds potential actions*]
+            ]
+          ]
+        )
+        #v(1.5pt)
+        #grid(
+          columns: (auto, 1fr, auto),
+          gutter: 2.5pt,
+          align: horizon + center,
+          badge("Cognitive Activity", color: rgb("#7c3aed")),
+          text(size: 5.1pt, fill: rgb("#4f46e5"), weight: "bold")[──── $"Directs what to look for"$ ────$arrow.r$],
+          badge("Perception", color: rgb("#059669"))
         )
       ]
     )
