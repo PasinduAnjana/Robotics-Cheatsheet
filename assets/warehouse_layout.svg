@@ -1,0 +1,56 @@
+<svg viewBox="0 0 380 135" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Container background -->
+  <rect x="0" y="0" width="380" height="135" rx="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="0.8"/>
+
+  <!-- Path Lines (Connections) -->
+  <!-- Top: Storage S <-> Packing P -->
+  <line x1="105" y1="28" x2="275" y2="28" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <rect x="150" y="19" width="80" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.7"/>
+  <text x="190" y="32" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#475569">Path(S, P)</text>
+
+  <!-- Left: Storage S <-> Charging C -->
+  <line x1="57" y1="42" x2="57" y2="92" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <rect x="18" y="58" width="78" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.7"/>
+  <text x="57" y="71" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#475569">Path(S, C)</text>
+
+  <!-- Bottom: Charging C <-> Delivery D -->
+  <line x1="105" y1="107" x2="275" y2="107" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <rect x="150" y="98" width="80" height="18" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.7"/>
+  <text x="190" y="111" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#475569">Path(C, D)</text>
+
+  <!-- Right: Packing P <-> Delivery D (BLOCKED) -->
+  <line x1="322" y1="42" x2="322" y2="92" stroke="#fca5a5" stroke-width="2" stroke-dasharray="3 3"/>
+  <rect x="262" y="57" width="108" height="20" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
+  <text x="316" y="71" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#b91c1c">Blocked(P, D) ✖</text>
+
+  <!-- 4 Location Nodes -->
+  <!-- Storage S -->
+  <g filter="url(#shadow)">
+    <rect x="10" y="14" width="95" height="28" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+    <text x="57" y="32" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0369a1">Storage S</text>
+  </g>
+
+  <!-- Packing P -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="14" width="95" height="28" rx="5" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.2"/>
+    <text x="322" y="32" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#5b21b6">Packing P</text>
+  </g>
+
+  <!-- Charging C -->
+  <g filter="url(#shadow)">
+    <rect x="10" y="93" width="95" height="28" rx="5" fill="#ecfdf5" stroke="#059669" stroke-width="1.2"/>
+    <text x="57" y="111" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#065f46">Charging C</text>
+  </g>
+
+  <!-- Delivery D -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="93" width="95" height="28" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
+    <text x="322" y="111" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400e">Delivery D</text>
+  </g>
+</svg>

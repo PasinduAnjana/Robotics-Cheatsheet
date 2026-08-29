@@ -1217,33 +1217,8 @@
   #card(title: "5. Warehouse STRIPS Case Study", color: rgb("#059669"), icon-name: "compass")[
     #highlight("Warehouse Layout:", color: rgb("#047857")) Locations Charging ($C$), Storage ($S$), Packing ($P$), Delivery ($D$).
     
-    #v(2pt)
-    // Visual Warehouse Map
-    #block(
-      width: 100%,
-      fill: rgb("#ecfdf5"),
-      radius: 4pt,
-      inset: (x: 6pt, y: 4pt),
-      align(center)[
-        #grid(
-          columns: (auto, 1fr, auto),
-          rows: (auto, auto, auto),
-          gutter: 3pt,
-          align: (center + horizon, center + horizon, center + horizon),
-          badge("Storage S", color: rgb("#0284c7")),
-          text(size: 5.8pt, fill: rgb("#64748b"))[─── Path(S, P) ───],
-          badge("Packing P", color: rgb("#7c3aed")),
-          
-          text(size: 5.8pt, fill: rgb("#64748b"))[│ Path(S, C)],
-          [],
-          text(size: 5.8pt, fill: rgb("#dc2626"), weight: "bold")[│ Blocked(P, D) ✖],
-          
-          badge("Charging C", color: rgb("#059669")),
-          text(size: 5.8pt, fill: rgb("#64748b"))[─── Path(C, D) ───],
-          badge("Delivery D", color: rgb("#d97706"))
-        )
-      ]
-    )
+    #v(2.0pt)
+    #image("assets/warehouse_layout.svg", width: 100%)
 
     #v(2pt)
     #rounded-table(
