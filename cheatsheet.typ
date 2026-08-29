@@ -1087,22 +1087,22 @@
   #colbreak()
 
   // --- 3. SHAKEY & STRIPS PLANNING ---
-  #card(title: "3. Shakey & STRIPS Planning", color: rgb("#d97706"), icon-name: "bot")[
-    - #highlight("Shakey the Robot (1967-69, SRI / DARPA):", color: rgb("#b45309")) First mobile AI robot using predicate logic planning.
-    - #highlight("Means-Ends Analysis:", color: rgb("#0f172a")) If goal is unreachable in one step, selects action reducing state difference ($Delta$).
+  #card(title: "3. Shakey & STRIPS Planning (6-Step Algorithm)", color: rgb("#d97706"), icon-name: "bot")[
+    - #highlight("Shakey (1967-69, SRI / DARPA):", color: rgb("#b45309")) First AI mobile robot using *Means-Ends Analysis* (reduces state difference $Delta$).
     
-    #v(2.5pt)
-    #mini-block(title: "STRIPS Recursive Planning Algorithm", badge-txt: "Stack-Based", color: rgb("#d97706"))[
+    #v(2pt)
+    #mini-block(title: "The 6 Steps in Executing STRIPS", badge-txt: "Recursive Stack", color: rgb("#d97706"))[
       #grid(
         columns: (auto, 1fr),
-        gutter: 4.5pt,
-        row-gutter: 2.5pt,
+        gutter: 4.0pt,
+        row-gutter: 2.0pt,
         align: (left + top, left + top),
-        num-bullet("1", color: rgb("#d97706")), [Evaluate difference: $Delta = "Goal" - "Current State"$. If $Delta = emptyset$, terminate.],
-        num-bullet("2", color: rgb("#d97706")), [Find operator from Difference Table whose *Add-List* negates $Delta$.],
-        num-bullet("3", color: rgb("#d97706")), [Bind variables & examine operator preconditions.],
-        num-bullet("4", color: rgb("#dc2626")), [*Precondition FALSE:* Push goal to stack, set failed precondition as new Subgoal, & recurse.],
-        num-bullet("5", color: rgb("#059669")), [*Preconditions TRUE:* Push operator to plan stack, update world model copy, pop & resume.]
+        num-bullet("1", color: rgb("#d97706")), [Compute difference ($Delta = "Goal" - "Initial State"$) via evaluation function. If $Delta = emptyset$, terminate.],
+        num-bullet("2", color: rgb("#d97706")), [If $Delta != emptyset$, pick first operator from Difference Table whose *add-list* negates the difference.],
+        num-bullet("3", color: rgb("#d97706")), [Examine preconditions to find a set of variable bindings that evaluate all to *TRUE*.],
+        num-bullet("4", color: rgb("#dc2626")), [*If FALSE precondition exists:* Make first FALSE precondition the *new subgoal*, push original goal to stack, & recurse (steps 2-3).],
+        num-bullet("5", color: rgb("#059669")), [*When all preconditions match:* Push operator onto plan stack and update a copy of world model.],
+        num-bullet("6", color: rgb("#2563eb")), [*Pop & Resume:* Return to parent operator with failed precondition to apply it or recurse on next failed condition.]
       )
     ]
   ]
