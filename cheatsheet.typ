@@ -1293,3 +1293,145 @@
     *Deliberative Pros vs Cons:* Pro: Computes optimal, goal-directed solutions. Con: Fragile under uncertainty, high computational complexity, slow to react to dynamic changes.     *STRIPS Add/Delete Rule:* World state updates *only* by deleting predicates in Delete-List and appending predicates in Add-List upon successful precondition binding.
   ]
 ]
+
+#pagebreak()
+
+// =========================================================
+// PAGE 6: LECTURE 06 — PERCEPTION & BEHAVIORAL COORDINATION
+// =========================================================
+
+#header-banner("06", "Perception, Affordances & Behavioral Coordination", "PERCEPTION & BEHAVIORS")
+
+#columns(3, gutter: 8.5pt)[
+
+  // --- 1. ACTION-PERCEPTION CYCLE & GIBSON ---
+  #card(title: "1. Action-Perception & Ecological Approach", color: rgb("#4f46e5"), icon-name: "activity")[
+    - #highlight("Action-Perception Cycle:", color: rgb("#4338ca")) Continuous closed feedback loop where perception guides actions, and actions alter the environment.
+    
+    #v(2pt)
+    // Visual Cycle Diagram
+    #block(
+      width: 100%,
+      fill: rgb("#f5f3ff"),
+      radius: 3.5pt,
+      inset: (x: 4pt, y: 3.5pt),
+      align(center)[
+        #grid(
+          columns: (1fr, auto, 1fr, auto, 1fr),
+          gutter: 3pt,
+          align: horizon + center,
+          flow-node("World", sub: "Environment", color: rgb("#0284c7")),
+          text(fill: rgb("#94a3b8"), size: 7.5pt)[$arrow.r$],
+          flow-node("Perception", sub: "Direct / Model", color: rgb("#7c3aed")),
+          text(fill: rgb("#94a3b8"), size: 7.5pt)[$arrow.r$],
+          flow-node("Action", sub: "Motor Output", color: rgb("#059669"))
+        )
+      ]
+    )
+    #v(2pt)
+    - #highlight("Gibson's Ecological Approach:", color: rgb("#0f172a"))
+      - #badge("Core Tenet", color: rgb("#4f46e5")) #text(size: 6.8pt, style: "italic")["... the world is its own best representation."]
+      - Perception evolved *only to support survival actions* in an ecological niche, not to build abstract 3D maps.
+  ]
+
+  // --- 2. AFFORDANCES & TWO PERCEPTUAL SYSTEMS ---
+  #card(title: "2. Affordances & Perceptual Systems", color: rgb("#0284c7"), icon-name: "eye")[
+    - #highlight("Affordance:", color: rgb("#0369a1")) Directly perceivable potentiality for action provided by the environment (e.g. a chair affords *sitability*).
+    - #highlight("Direct Perception:", color: rgb("#0f172a")) Requires *no memory, inference, or interpretation* $arrow.r$ near-instantaneous execution.
+      - #badge("Visual: Optic Flow", color: rgb("#0284c7")) Pattern of apparent visual motion; expanding outward from center gives *time-to-contact* (diving gannets, landing).
+      - #badge("Non-Visual", color: rgb("#059669")) Sound pitch change when filling a container indicates fullness without knowing cavity dimensions.
+
+    #v(2.5pt)
+    #rounded-table(
+      columns: (1fr, 1.2fr),
+      inset: 2.5pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#e0f2fe") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.4pt)[Direct Perception (Gibsonian)]],
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.4pt)[Recognition (Cognitive)]],
+      [
+        - Primitive brain structures        - Local world models        - Fast, lightweight affordances
+      ],
+      [
+        - High cognitive brain        - Global world models        - Top-down internal templates ("my cup vs your cup")
+      ]
+    )
+  ]
+
+  #colbreak()
+
+  // --- 3. BEHAVIOR ACQUISITION SPECTRUM ---
+  #card(title: "3. Behavior Acquisition Spectrum", color: rgb("#d97706"), icon-name: "compass")[
+    #rounded-table(
+      columns: (0.9fr, 0.9fr, 1.3fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#fef3c7") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#92400e"), weight: "bold", size: 6.2pt)[Type]],
+      [#text(fill: rgb("#92400e"), weight: "bold", size: 6.2pt)[Biological Model]],
+      [#text(fill: rgb("#92400e"), weight: "bold", size: 6.2pt)[Mechanism & Strategy]],
+      
+      [*Innate*], [*Arctic Tern* chicks], [Born with rule: "Peck at largest red blob" $arrow.r$ triggers parent feeding reflex.],
+      [*Sequence of Innate*], [*Digger Wasp*], [Mating $arrow.r$ internal state triggers nest building $arrow.r$ visual nest triggers egg laying.],
+      [*Innate with Memory*], [*Baby Bees*], [Innate flight exploration in expanding arcs to memorize hive appearance and approach vectors.],
+      [*Learned*], [*Lion Cubs*], [Born with zero hunting behaviors; complex multi-stage skills (stalk, chase) learned over years.]
+    )
+  ]
+
+  // --- 4. INNATE RELEASING MECHANISMS (IRM) ---
+  #card(title: "4. Innate Releasing Mechanisms (IRM)", color: rgb("#7c3aed"), icon-name: "zap")[
+    - #highlight("IRM Definition:", color: rgb("#6d28d9")) Theoretical construct where specific sensory triggers (*sign stimuli / releasers*) activate fixed behaviors.
+    - #highlight("Releaser as Control Signal:", color: rgb("#0f172a")) Acts as a Boolean latch turning a behavior ON or OFF. If not released, behavior produces zero output.
+    - #highlight("Compound Releasers:", color: rgb("#6d28d9")) Logical combination of *external stimuli* and *internal motivation* (e.g. $text("Hungry") and text("FoodPresent")$).
+    
+    #v(2.5pt)
+    #mini-block(title: "Execution Modes & State Control", badge-txt: "Coordination", color: rgb("#7c3aed"))[
+      - #highlight("Implicit Chaining:", color: rgb("#0f172a")) Execution order emerges dynamically from which releasers are TRUE.
+      - #highlight("Inhibition & FAP Persistence:", color: rgb("#0f172a")) Prevents rapid flickering between states (e.g. flee vs feed) by locking behavior for time $T$.
+      - #highlight("Explicit Sequences:", color: rgb("#0f172a")) State-machine order where each behavior runs to completion before advancing.
+    ]
+  ]
+
+  #colbreak()
+
+  // --- 5. BEHAVIORAL COORDINATION & CONCURRENT BEHAVIORS ---
+  #card(title: "5. Coordination & Concurrent Behaviors", color: rgb("#059669"), icon-name: "layers")[
+    #highlight("Behavioral Coordination Architecture:", color: rgb("#047857"))
+    #v(1.5pt)
+    // Visual Tree
+    #block(
+      width: 100%,
+      fill: rgb("#ecfdf5"),
+      radius: 4pt,
+      inset: (x: 5pt, y: 3.5pt),
+      align(center)[
+        #badge("Behavioral Coordination", color: rgb("#047857"))        #v(1.5pt)
+        #text(size: 6.0pt, fill: rgb("#64748b"))[┌──────────────────┴──────────────────┐]        #grid(
+          columns: (1fr, 1fr),
+          [#badge("Concurrent", color: rgb("#0284c7"))],
+          [#badge("Sequences", color: rgb("#7c3aed"))]
+        )
+        #v(1.0pt)
+        #text(size: 5.5pt, fill: rgb("#64748b"))[┌────────┴────────┐]        #grid(
+          columns: (1fr, 1fr),
+          [#text(size: 5.5pt, weight: "bold", fill: rgb("#0369a1"))[Cooperating\ (Blending / $Sigma$)]],
+          [#text(size: 5.5pt, weight: "bold", fill: rgb("#0369a1"))[Competing\ (Arbitration)]]
+        )
+      ]
+    )
+
+    #v(2.5pt)
+    #highlight("3 Types of Concurrent Interactions:", color: rgb("#047857"))
+    #v(1.5pt)
+    - #highlight("1. Equilibrium:", color: rgb("#0f172a")) Behaviors balance each other out (e.g. *Squirrel* hesitant between food lure and fear of human).
+    - #highlight("2. Dominance (Winner-Take-All):", color: rgb("#0f172a")) One behavior completely suppresses others (e.g. sleep vs feed, flight over forage).
+    - #highlight("3. Cancellation:", color: rgb("#0f172a")) Opposing stimuli cancel each other, leaving displacement behavior (e.g. *Male Stickleback* fish building a new nest when territory defense & attack cancel).
+  ]
+
+  // --- 6. EXAM TIP BOX ---
+  #tip-box(title: "HIGH-YIELD EXAM DISTINCTION (LECTURE 06)")[
+    *Design Hierarchy:* Always solve behavior using *Affordances* (direct perception) first if possible; resort to *Recognition* (world models) only when cognitive identification is strictly required.     *IRM Control vs Perceptual Filter:* An IRM's releaser decides *WHEN* to run; perceptual schema filters *WHAT* to track.
+  ]
+]
