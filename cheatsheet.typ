@@ -1422,3 +1422,101 @@
     *Design Hierarchy:* Always solve behavior using *Affordances* (direct perception) first if possible; resort to *Recognition* (world models) only when cognitive identification is strictly required.     *IRM Control vs Perceptual Filter:* An IRM's releaser decides *WHEN* to run; perceptual schema filters *WHAT* to track.
   ]
 ]
+
+#pagebreak()
+
+// =========================================================
+// PAGE 7: LECTURE 07 — BEHAVIORAL COORDINATION: POTENTIAL FIELDS
+// =========================================================
+
+#header-banner("07", "Behavioral Coordination: Potential Fields", "POTENTIAL FIELDS")
+
+#columns(3, gutter: 8.5pt)[
+
+  // --- 1. POTENTIAL FIELDS METHODOLOGY ---
+  #card(title: "1. Potential Fields Methodology", color: rgb("#4f46e5"), icon-name: "compass")[
+    - #highlight("Core Concept:", color: rgb("#4338ca")) Most common method for *cooperating behaviors*; outputs are represented as *vectors* in a continuous field.
+    - #highlight("Vector Tuple (m, d):", color: rgb("#0f172a")) Written as $(m, d)$ where:
+      - $m$ = Magnitude (velocity / force strength).
+      - $d$ = Direction (heading angle $phi$).
+    - #highlight("Field Analogy:", color: rgb("#4338ca")) Analogous to magnetic or gravitational fields; the robot behaves as a *charged particle* influenced by surrounding objects.
+    - #highlight("2D (x, y) Grid:", color: rgb("#0f172a")) Map divided into square elements; continuous space extends easily from 2D to 3D.
+  ]
+
+  // --- 2. PRIMITIVE POTENTIAL FIELDS ---
+  #card(title: "2. Primitive Potential Fields", color: rgb("#0284c7"), icon-name: "grid")[
+    - #highlight("5 Fundamental Primitive Fields:", color: rgb("#0369a1"))
+    
+    #v(2.0pt)
+    #image("assets/primitive_pfields.svg", width: 100%)
+    
+    #v(2.0pt)
+    #rounded-table(
+      columns: (1fr, 1.4fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#e0f2fe") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.2pt)[Field]],
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.2pt)[Application & Function]],
+      [*Uniform*], [Constant flow / current across region],
+      [*Perpendicular*], [Orient away from walls / corridor centering],
+      [*Attraction*], [Target seeking, phototaxis, waypoints],
+      [*Repulsion*], [Obstacle avoidance ($180 degree$ push-away)],
+      [*Tangential*], [Orbiting obstacles, perimeter tracing, docking]
+    )
+  ]
+
+  #colbreak()
+
+  // --- 3. MAGNITUDE PROFILES ---
+  #card(title: "3. Magnitude Profiles & Decay Functions", color: rgb("#d97706"), icon-name: "trending-down")[
+    - #highlight("Magnitude Profile:", color: rgb("#b45309")) Defines how vector magnitude changes over distance $x$ ($d$).
+    
+    #v(2.0pt)
+    #image("assets/magnitude_profiles.svg", width: 100%)
+    
+    #v(2.0pt)
+    - #highlight("1. Constant Magnitude:", color: rgb("#0f172a")) Binary velocity inside range; drops abruptly to 0. *Drawback:* causes jerky oscillations on field perimeter.
+    - #highlight("2. Linear Drop-off", color: rgb("#0f172a")) ($y = m x + b$): Response proportional to stimulus (reflexivity). Slows down to prevent overshooting.
+    - #highlight("3. Exponential Drop-off", color: rgb("#0f172a")) ($y prop 1/d^2$): Force halves with distance; smooth asymptotic decay eliminates sharp boundaries.
+  ]
+
+  // --- 4. COMBINING FIELDS VIA VECTOR SUMMATION ---
+  #card(title: "4. Combining Fields & Vector Summation", color: rgb("#7c3aed"), icon-name: "cpu")[
+    - #highlight("Emergent Trajectory:", color: rgb("#6d28d9")) Emerges from simultaneous linear summation of attractive & repulsive schemas:
+      #align(center)[#badge("Resultant:", color: rgb("#7c3aed")) $bold(V)_("resultant") = sum_(i=1)^n bold(V)_i = bold(V)_("att") + bold(V)_("rep")$]
+    
+    #v(2.0pt)
+    #image("assets/pfield_summation.svg", width: 100%)
+  ]
+
+  #colbreak()
+
+  // --- 5. LOCAL MINIMA PROBLEM & SOLUTIONS ---
+  #card(title: "5. Local Minima Problem & Solutions", color: rgb("#059669"), icon-name: "alert-triangle")[
+    - #highlight("Local Minima:", color: rgb("#047857")) Occurs when opposing forces cancel out ($sum bold(V) = bold(0)$) before goal is reached, trapping robot in deadlock.
+    
+    #v(2.0pt)
+    #image("assets/pfield_local_minima.svg", width: 100%)
+    
+    #v(2.0pt)
+    #rounded-table(
+      columns: (1fr, 1.4fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#d1fae5") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#065f46"), weight: "bold", size: 6.2pt)[Solution Method]],
+      [#text(fill: rgb("#065f46"), weight: "bold", size: 6.2pt)[Mechanism & Trade-off]],
+      [*Random Noise*], [Always-active small noise schema to bump robot out of deadlocks.],
+      [*Navigation Templates (NaTs)*], [Uses strategic vector to inform redirection (e.g. avoid water on bridge).],
+      [*Harmonic Functions*], [Solves Laplace eq ($nabla^2 phi = 0$); *guarantees 0 local minima*. Heavy compute.]
+    )
+  ]
+
+  // --- 6. EXAM TIP BOX ---
+  #tip-box(title: "HIGH-YIELD EXAM DISTINCTION (LECTURE 07)")[
+    *Pfield Advantages:* Intuitive continuous representation, compositional C++ behavioral libraries, extensible to 3D.     *Linear vs Exponential Drop-off:* Linear represents reflexivity ($y = m x + b$) but has boundary edge; Exponential provides smooth decay without jerky chattering.     *Harmonic Guarantee:* Only harmonic functions strictly eliminate all local minima traps mathematically.
+  ]
+]

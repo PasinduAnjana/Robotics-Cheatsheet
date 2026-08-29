@@ -1,0 +1,68 @@
+<svg viewBox="0 0 380 125" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="arr-m" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#64748b" />
+    </marker>
+    <marker id="arr-mred" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-mgreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#059669" />
+    </marker>
+    <filter id="shad2" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Left: Raw Local Minima Trap -->
+  <g transform="translate(5, 5)">
+    <rect x="0" y="0" width="175" height="115" rx="5" fill="#fef2f2" stroke="#fecaca" stroke-width="0.8"/>
+    <text x="87" y="14" text-anchor="middle" font-size="8" font-weight="bold" fill="#991b1b">Local Minima Deadlock (ΣV = 0)</text>
+
+    <!-- Goal G -->
+    <circle cx="145" cy="58" r="8" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.2"/>
+    <text x="145" y="61" text-anchor="middle" font-size="8" font-weight="bold" fill="#3730a3">G</text>
+
+    <!-- Obstacle O -->
+    <circle cx="95" cy="58" r="9" fill="#fee2e2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="95" y="61" text-anchor="middle" font-size="8" font-weight="bold" fill="#991b1b">O</text>
+
+    <!-- Robot R -->
+    <circle cx="42" cy="58" r="8" fill="#ecfdf5" stroke="#059669" stroke-width="1.2"/>
+    <text x="42" y="61" text-anchor="middle" font-size="8" font-weight="bold" fill="#065f46">R</text>
+
+    <!-- Opposite Forces Vector -->
+    <path d="M 46 51 L 78 51" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arr-m)"/>
+    <text x="62" y="44" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#4338ca">F_att →</text>
+
+    <path d="M 82 65 L 50 65" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arr-mred)"/>
+    <text x="66" y="77" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#b91c1c">← F_rep</text>
+
+    <rect x="22" y="86" width="130" height="18" rx="3" fill="#ffffff" stroke="#fca5a5" stroke-width="0.8"/>
+    <text x="87" y="98" text-anchor="middle" font-size="6.8" font-weight="bold" fill="#dc2626">Forces Cancel Out: Robot Stuck!</text>
+  </g>
+
+  <!-- Right: NaTs Bridge Redirection -->
+  <g transform="translate(195, 5)">
+    <rect x="0" y="0" width="180" height="115" rx="5" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="0.8"/>
+    <text x="90" y="14" text-anchor="middle" font-size="8" font-weight="bold" fill="#065f46">NaTs: Bridge Redirection</text>
+
+    <!-- Top Water -->
+    <rect x="10" y="22" width="160" height="14" rx="2" fill="#bae6fd"/>
+    <text x="90" y="32" text-anchor="middle" font-size="7" font-style="italic" fill="#0284c7">Water Hazard</text>
+
+    <!-- Bottom Water -->
+    <rect x="10" y="84" width="160" height="14" rx="2" fill="#bae6fd"/>
+    <text x="90" y="94" text-anchor="middle" font-size="7" font-style="italic" fill="#0284c7">Water Hazard</text>
+
+    <!-- Obstacle on Left of Bridge -->
+    <circle cx="70" cy="52" r="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+    <text x="70" y="55" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#991b1b">O</text>
+
+    <!-- Flow field lines around obstacle -->
+    <path d="M 25 58 Q 50 72 90 68 T 155 58" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="3 2" marker-end="url(#arr-mgreen)"/>
+    
+    <text x="90" y="47" text-anchor="middle" font-size="6.2" font-weight="bold" fill="#047857">Informed Redirection (Pass Right)</text>
+    <text x="90" y="110" text-anchor="middle" font-size="6.0" fill="#475569">Avoids pushing robot off edge into water</text>
+  </g>
+</svg>

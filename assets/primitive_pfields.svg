@@ -1,0 +1,57 @@
+<svg viewBox="0 0 420 115" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#dc2626" />
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#059669" />
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#7c3aed" />
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#d97706" />
+    </marker>
+  </defs>
+
+  <!-- Card 1: Uniform -->
+  <rect x="5" y="4" width="76" height="106" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="43" y="18" text-anchor="middle" font-size="8" font-weight="bold" fill="#0369a1">a. Uniform</text>
+  <path d="M 18 32 L 68 32 M 18 48 L 68 48 M 18 64 L 68 64 M 18 80 L 68 80" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="43" y="99" text-anchor="middle" font-size="6.5" fill="#64748b">Constant flow</text>
+
+  <!-- Card 2: Perpendicular -->
+  <rect x="87" y="4" width="76" height="106" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="125" y="18" text-anchor="middle" font-size="8" font-weight="bold" fill="#047857">b. Perpendicular</text>
+  <rect x="97" y="82" width="56" height="6" rx="2" fill="#94a3b8"/>
+  <path d="M 105 78 L 105 32 M 118 78 L 118 32 M 132 78 L 132 32 M 145 78 L 145 32" stroke="#059669" stroke-width="1.5" marker-end="url(#arr-green)"/>
+  <text x="125" y="99" text-anchor="middle" font-size="6.5" fill="#64748b">Wall push-away</text>
+
+  <!-- Card 3: Attraction -->
+  <rect x="169" y="4" width="76" height="106" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="207" y="18" text-anchor="middle" font-size="8" font-weight="bold" fill="#4338ca">c. Attraction</text>
+  <circle cx="207" cy="55" r="4.5" fill="#4f46e5"/>
+  <path d="M 207 28 L 207 46 M 207 82 L 207 64 M 180 55 L 198 55 M 234 55 L 216 55 M 188 36 L 200 48 M 226 36 L 214 48 M 188 74 L 200 62 M 226 74 L 214 62" stroke="#4f46e5" stroke-width="1.3" marker-end="url(#arr-purple)"/>
+  <text x="207" y="99" text-anchor="middle" font-size="6.5" fill="#64748b">Goal / Taxis</text>
+
+  <!-- Card 4: Repulsion -->
+  <rect x="251" y="4" width="76" height="106" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="289" y="18" text-anchor="middle" font-size="8" font-weight="bold" fill="#b91c1c">d. Repulsion</text>
+  <circle cx="289" cy="55" r="4.5" fill="#dc2626"/>
+  <path d="M 289 49 L 289 30 M 289 61 L 289 80 M 283 55 L 264 55 M 295 55 L 314 55 M 284 50 L 272 38 M 294 50 L 306 38 M 284 60 L 272 72 M 294 60 L 306 72" stroke="#dc2626" stroke-width="1.3" marker-end="url(#arr-red)"/>
+  <text x="289" y="99" text-anchor="middle" font-size="6.5" fill="#64748b">Obstacle Avoid</text>
+
+  <!-- Card 5: Tangential -->
+  <rect x="333" y="4" width="82" height="106" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="374" y="18" text-anchor="middle" font-size="8" font-weight="bold" fill="#b45309">e. Tangential</text>
+  <circle cx="374" cy="55" r="4.5" fill="#d97706"/>
+  <!-- Circular swirl arcs -->
+  <path d="M 374 34 A 21 21 0 0 1 395 55" fill="none" stroke="#d97706" stroke-width="1.4" marker-end="url(#arr-amber)"/>
+  <path d="M 395 55 A 21 21 0 0 1 374 76" fill="none" stroke="#d97706" stroke-width="1.4" marker-end="url(#arr-amber)"/>
+  <path d="M 374 76 A 21 21 0 0 1 353 55" fill="none" stroke="#d97706" stroke-width="1.4" marker-end="url(#arr-amber)"/>
+  <path d="M 353 55 A 21 21 0 0 1 374 34" fill="none" stroke="#d97706" stroke-width="1.4" marker-end="url(#arr-amber)"/>
+  <text x="374" y="99" text-anchor="middle" font-size="6.5" fill="#64748b">Orbit / Docking</text>
+</svg>

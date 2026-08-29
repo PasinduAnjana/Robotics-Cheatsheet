@@ -1,0 +1,65 @@
+<svg viewBox="0 0 380 120" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#0284c7" />
+    </marker>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#475569" />
+    </marker>
+    <filter id="shad" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Container -->
+  <rect x="0" y="0" width="380" height="120" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="0.8"/>
+
+  <!-- Left: Sensor inputs -->
+  <text x="12" y="32" font-size="8" font-weight="bold" fill="#0369a1">Range Sensor</text>
+  <path d="M 72 29 L 98 29" stroke="#0284c7" stroke-width="1.4" marker-end="url(#arr-blue)"/>
+
+  <text x="16" y="92" font-size="8" font-weight="bold" fill="#4338ca">Goal Sensor</text>
+  <path d="M 72 89 L 98 89" stroke="#4f46e5" stroke-width="1.4" marker-end="url(#arr-blue)"/>
+
+  <!-- Middle: Schema Blocks -->
+  <g filter="url(#shad)">
+    <rect x="102" y="14" width="108" height="30" rx="5" fill="#fee2e2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="156" y="27" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#991b1b">RUN AWAY</text>
+    <text x="156" y="38" text-anchor="middle" font-size="7" fill="#b91c1c">(Repulsive Field)</text>
+  </g>
+
+  <g filter="url(#shad)">
+    <rect x="102" y="74" width="108" height="30" rx="5" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.2"/>
+    <text x="156" y="87" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#3730a3">MOVE2GOAL</text>
+    <text x="156" y="98" text-anchor="middle" font-size="7" fill="#4338ca">(Attractive Field)</text>
+  </g>
+
+  <!-- Connections to Summation -->
+  <path d="M 210 29 L 244 54" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr-slate)"/>
+  <path d="M 210 89 L 244 64" stroke="#64748b" stroke-width="1.4" marker-end="url(#arr-slate)"/>
+  <text x="224" y="44" font-size="6.5" fill="#64748b">V_rep</text>
+  <text x="224" y="80" font-size="6.5" fill="#64748b">V_att</text>
+
+  <!-- Summation Circle Σ -->
+  <g filter="url(#shad)">
+    <circle cx="254" cy="59" r="14" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
+    <text x="254" y="64" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">Σ</text>
+  </g>
+
+  <!-- Summed Outputs to Actuators -->
+  <path d="M 268 53 L 298 32" stroke="#059669" stroke-width="1.6" marker-end="url(#arr-slate)"/>
+  <path d="M 268 65 L 298 86" stroke="#059669" stroke-width="1.6" marker-end="url(#arr-slate)"/>
+
+  <!-- Right: Actuators -->
+  <g filter="url(#shad)">
+    <rect x="302" y="16" width="70" height="26" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.1"/>
+    <text x="337" y="28" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#065f46">TURN</text>
+    <text x="337" y="37" text-anchor="middle" font-size="6.5" fill="#047857">(Steering)</text>
+  </g>
+
+  <g filter="url(#shad)">
+    <rect x="302" y="76" width="70" height="26" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.1"/>
+    <text x="337" y="88" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#065f46">FORWARD</text>
+    <text x="337" y="97" text-anchor="middle" font-size="6.5" fill="#047857">(Drive Motor)</text>
+  </g>
+</svg>
