@@ -1400,24 +1400,39 @@
   #card(title: "5. Coordination & Concurrent Behaviors", color: rgb("#059669"), icon-name: "layers")[
     #highlight("Behavioral Coordination Architecture:", color: rgb("#047857"))
     #v(1.5pt)
-    // Visual Tree
     #block(
       width: 100%,
       fill: rgb("#ecfdf5"),
       radius: 4pt,
-      inset: (x: 5pt, y: 3.5pt),
+      inset: (x: 4.5pt, y: 3.5pt),
       align(center)[
-        #badge("Behavioral Coordination", color: rgb("#047857"))        #v(1.5pt)
-        #text(size: 6.0pt, fill: rgb("#64748b"))[┌──────────────────┴──────────────────┐]        #grid(
-          columns: (1fr, 1fr),
-          [#badge("Concurrent", color: rgb("#0284c7"))],
-          [#badge("Sequences", color: rgb("#7c3aed"))]
-        )
-        #v(1.0pt)
-        #text(size: 5.5pt, fill: rgb("#64748b"))[┌────────┴────────┐]        #grid(
-          columns: (1fr, 1fr),
-          [#text(size: 5.5pt, weight: "bold", fill: rgb("#0369a1"))[Cooperating\ (Blending / $Sigma$)]],
-          [#text(size: 5.5pt, weight: "bold", fill: rgb("#0369a1"))[Competing\ (Arbitration)]]
+        #badge("Behavioral Coordination", color: rgb("#047857"))
+        #v(1.5pt)
+        #grid(
+          columns: (1.3fr, 0.7fr),
+          align: (center, center),
+          [
+            #text(size: 6.0pt, fill: rgb("#64748b"))[┌───────────────]\
+            #v(0.5pt)
+            #badge("Concurrent", color: rgb("#0284c7"))\
+            #v(1.5pt)
+            #text(size: 6.0pt, fill: rgb("#64748b"))[┌───────┴───────┐]\
+            #v(0.5pt)
+            #grid(
+              columns: (1fr, 1fr),
+              gutter: 2.5pt,
+              align: (center, center),
+              [#text(size: 5.4pt, weight: "bold", fill: rgb("#0369a1"))[Cooperating\ (Blending / $Sigma$)]],
+              [#text(size: 5.4pt, weight: "bold", fill: rgb("#0369a1"))[Competing\ (Arbitration)]]
+            )
+          ],
+          [
+            #text(size: 6.0pt, fill: rgb("#64748b"))[───────────────┐]\
+            #v(0.5pt)
+            #badge("Sequences", color: rgb("#7c3aed"))\
+            #v(2.5pt)
+            #text(size: 5.3pt, fill: rgb("#64748b"))[(State Machines /\ Chained Tasks)]
+          ]
         )
       ]
     )
