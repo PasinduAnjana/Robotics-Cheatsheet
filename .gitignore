@@ -1,0 +1,3 @@
+# Ignore preview images and temporary logs
+*.png
+*.log
