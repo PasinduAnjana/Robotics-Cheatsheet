@@ -1093,16 +1093,86 @@
     #v(2pt)
     #mini-block(title: "The 6 Steps in Executing STRIPS", badge-txt: "Recursive Stack", color: rgb("#d97706"))[
       #grid(
-        columns: (auto, 1fr),
-        gutter: 4.0pt,
-        row-gutter: 2.0pt,
-        align: (left + top, left + top),
-        num-bullet("1", color: rgb("#d97706")), [Compute difference ($Delta = "Goal" - "Initial State"$) via evaluation function. If $Delta = emptyset$, terminate.],
-        num-bullet("2", color: rgb("#d97706")), [If $Delta != emptyset$, pick first operator from Difference Table whose *add-list* negates the difference.],
-        num-bullet("3", color: rgb("#d97706")), [Examine preconditions to find a set of variable bindings that evaluate all to *TRUE*.],
-        num-bullet("4", color: rgb("#dc2626")), [*If FALSE precondition exists:* Make first FALSE precondition the *new subgoal*, push original goal to stack, & recurse (steps 2-3).],
-        num-bullet("5", color: rgb("#059669")), [*When all preconditions match:* Push operator onto plan stack and update a copy of world model.],
-        num-bullet("6", color: rgb("#2563eb")), [*Pop & Resume:* Return to parent operator with failed precondition to apply it or recurse on next failed condition.]
+        columns: 1fr,
+        row-gutter: 2.2pt,
+        block(
+          width: 100%,
+          fill: rgb("#fffbeb"),
+          radius: 3pt,
+          inset: (x: 4pt, y: 2.0pt),
+          grid(
+            columns: (auto, 1fr),
+            gutter: 4pt,
+            align: (left + top, left + top),
+            num-bullet("1", color: rgb("#d97706")),
+            [#text(size: 6.9pt)[*Compute difference:* $Delta = "Goal" - "Initial State"$. If $Delta = emptyset$, terminate.]]
+          )
+        ),
+        block(
+          width: 100%,
+          fill: rgb("#f0f9ff"),
+          radius: 3pt,
+          inset: (x: 4pt, y: 2.0pt),
+          grid(
+            columns: (auto, 1fr),
+            gutter: 4pt,
+            align: (left + top, left + top),
+            num-bullet("2", color: rgb("#0284c7")),
+            [#text(size: 6.9pt)[*Select Operator:* If $Delta != emptyset$, pick 1st operator in Difference Table whose *add-list* negates $Delta$.]]
+          )
+        ),
+        block(
+          width: 100%,
+          fill: rgb("#eef2ff"),
+          radius: 3pt,
+          inset: (x: 4pt, y: 2.0pt),
+          grid(
+            columns: (auto, 1fr),
+            gutter: 4pt,
+            align: (left + top, left + top),
+            num-bullet("3", color: rgb("#4f46e5")),
+            [#text(size: 6.9pt)[*Examine Preconditions:* Check if variable bindings evaluate all preconditions to *TRUE*.]]
+          )
+        ),
+        block(
+          width: 100%,
+          fill: rgb("#fff1f2"),
+          radius: 3pt,
+          inset: (x: 4pt, y: 2.0pt),
+          grid(
+            columns: (auto, 1fr),
+            gutter: 4pt,
+            align: (left + top, left + top),
+            num-bullet("4", color: rgb("#dc2626")),
+            [#text(size: 6.9pt)[*Recurse on Subgoal:* If FALSE, push original goal to stack, set 1st FALSE condition as *new subgoal*, & recurse.]]
+          )
+        ),
+        block(
+          width: 100%,
+          fill: rgb("#ecfdf5"),
+          radius: 3pt,
+          inset: (x: 4pt, y: 2.0pt),
+          grid(
+            columns: (auto, 1fr),
+            gutter: 4pt,
+            align: (left + top, left + top),
+            num-bullet("5", color: rgb("#059669")),
+            [#text(size: 6.9pt)[*Push to Plan Stack:* When all preconditions match, push operator to plan stack & update world model copy.]]
+          )
+        ),
+        block(
+          width: 100%,
+          fill: rgb("#f5f3ff"),
+          radius: 3pt,
+          inset: (x: 4pt, y: 2.0pt),
+          grid(
+            columns: (auto, 1fr),
+            gutter: 4pt,
+            align: (left + top, left + top),
+            num-bullet("6", color: rgb("#7c3aed")),
+            [#text(size: 6.9pt)[*Pop & Resume:* Return to parent operator with failed condition to apply it or recurse on next condition.]]
+          )
+        )
       )
     ]
   ]
