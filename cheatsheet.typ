@@ -1404,32 +1404,46 @@
       width: 100%,
       fill: rgb("#ecfdf5"),
       radius: 4pt,
-      inset: (x: 4.5pt, y: 3.5pt),
+      inset: (x: 4.5pt, y: 4.0pt),
       align(center)[
         #badge("Behavioral Coordination", color: rgb("#047857"))
-        #v(1.5pt)
+        
+        #box(width: 100%, height: 3.5pt)[
+          #place(top + center, dx: 0pt, dy: 0pt, line(angle: 90deg, length: 3.5pt, stroke: 0.65pt + rgb("#64748b")))
+        ]
+        
         #grid(
-          columns: (1.3fr, 0.7fr),
-          align: (center, center),
+          columns: (1.25fr, 0.75fr),
+          align: (center, top),
           [
-            #text(size: 6.0pt, fill: rgb("#64748b"))[┌───────────────]\
-            #v(0.5pt)
-            #badge("Concurrent", color: rgb("#0284c7"))\
-            #v(1.5pt)
-            #text(size: 6.0pt, fill: rgb("#64748b"))[┌───────┴───────┐]\
-            #v(0.5pt)
+            #box(width: 100%, height: 4.5pt)[
+              #place(top + right, dx: 0pt, dy: 0pt, line(length: 48%, stroke: 0.65pt + rgb("#64748b")))
+              #place(top + left, dx: 52%, dy: 0pt, line(angle: 90deg, length: 4.5pt, stroke: 0.65pt + rgb("#64748b")))
+            ]
+            #badge("Concurrent", color: rgb("#0284c7"))
+            
+            #box(width: 100%, height: 3.5pt)[
+              #place(top + center, dx: 0pt, dy: 0pt, line(angle: 90deg, length: 3.5pt, stroke: 0.65pt + rgb("#64748b")))
+            ]
+            #box(width: 100%, height: 4.5pt)[
+              #place(top + center, dx: 0pt, dy: 0pt, line(length: 68%, stroke: 0.65pt + rgb("#64748b")))
+              #place(top + left, dx: 16%, dy: 0pt, line(angle: 90deg, length: 4.5pt, stroke: 0.65pt + rgb("#64748b")))
+              #place(top + right, dx: -16%, dy: 0pt, line(angle: 90deg, length: 4.5pt, stroke: 0.65pt + rgb("#64748b")))
+            ]
             #grid(
               columns: (1fr, 1fr),
               gutter: 2.5pt,
-              align: (center, center),
+              align: (center, top),
               [#text(size: 5.4pt, weight: "bold", fill: rgb("#0369a1"))[Cooperating\ (Blending / $Sigma$)]],
               [#text(size: 5.4pt, weight: "bold", fill: rgb("#0369a1"))[Competing\ (Arbitration)]]
             )
           ],
           [
-            #text(size: 6.0pt, fill: rgb("#64748b"))[───────────────┐]\
-            #v(0.5pt)
-            #badge("Sequences", color: rgb("#7c3aed"))\
+            #box(width: 100%, height: 4.5pt)[
+              #place(top + left, dx: 0pt, dy: 0pt, line(length: 48%, stroke: 0.65pt + rgb("#64748b")))
+              #place(top + left, dx: 48%, dy: 0pt, line(angle: 90deg, length: 4.5pt, stroke: 0.65pt + rgb("#64748b")))
+            ]
+            #badge("Sequences", color: rgb("#7c3aed"))
             #v(2.5pt)
             #text(size: 5.3pt, fill: rgb("#64748b"))[(State Machines /\ Chained Tasks)]
           ]
