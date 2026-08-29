@@ -1004,3 +1004,222 @@
     *Priority Arbitration:* Safety/impact reflexes always take precedence over non-contact navigation.
   ]
 ]
+
+#pagebreak()
+
+// =========================================================
+// PAGE 5: LECTURE 05 — ROBOT CONTROL ARCHITECTURES & STRIPS
+// =========================================================
+
+#header-banner("05", "Robot Control Architectures & STRIPS Planning", "CONTROL ARCHITECTURES")
+
+#columns(3, gutter: 8.5pt)[
+
+  // --- 1. CONTROL ARCHITECTURES TAXONOMY ---
+  #card(title: "1. Control Paradigm Taxonomy", color: rgb("#4f46e5"), icon-name: "cpu")[
+    - #highlight("Core Philosophy:", color: rgb("#4338ca")) How sensing, decision-making, and execution interact.
+    
+    #v(2pt)
+    #rounded-table(
+      columns: (1fr, 1.3fr),
+      inset: 2.8pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#e0e7ff") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#3730a3"), weight: "bold", size: 6.6pt)[Paradigm]],
+      [#text(fill: rgb("#3730a3"), weight: "bold", size: 6.6pt)[Information Flow & Focus]],
+      [*Hierarchical / Deliberative*], [$"Sense" arrow.r "Plan" arrow.r "Act"$\ Global world model, top-down plan],
+      [*Reactive / Behavior-Based*], [$"Sense" arrow.r "Act"$\ Fast direct S-R loops, no world model],
+      [*Hybrid*], [$"Plan" arrow.r ["Sense" arrow.r "Act"]$\ Deliberative mission + reactive reflex]
+    )
+
+    #v(2.5pt)
+    #highlight("Hierarchical (Sense-Plan-Act):", color: rgb("#4338ca"))
+    #v(1.5pt)
+    // Visual SPA Flowchart
+    #block(
+      width: 100%,
+      fill: rgb("#f5f3ff"),
+      radius: 3.5pt,
+      inset: 3.5pt,
+      align(center)[
+        #grid(
+          columns: (1fr, auto, 1fr, auto, 1fr),
+          gutter: 3pt,
+          align: horizon + center,
+          flow-node("Sense", sub: "Observe", color: rgb("#0284c7")),
+          text(fill: rgb("#94a3b8"), size: 7.5pt)[$arrow.r$],
+          flow-node("Plan", sub: "World Model", color: rgb("#d97706")),
+          text(fill: rgb("#94a3b8"), size: 7.5pt)[$arrow.r$],
+          flow-node("Act", sub: "Execute", color: rgb("#059669"))
+        )
+      ]
+    )
+    #v(2pt)
+    - #highlight("'Eyes Closed' Execution:", color: rgb("#0f172a")) Robot senses once, computes entire plan, then executes directives without re-evaluating until loop restarts.
+  ]
+
+  // --- 2. MONOLITHIC SENSING & AUTONOMOUS PIPELINE ---
+  #card(title: "2. Monolithic Sensing & Architecture", color: rgb("#0284c7"), icon-name: "layers")[
+    - #highlight("Monolithic Sensing:", color: rgb("#0369a1")) All sensor observations fuse into *one global data structure* (World Model) accessed by planner:
+      - #badge("A Priori", color: rgb("#0284c7")) Pre-loaded maps/building layout.
+      - #badge("Sensing Info", color: rgb("#059669")) Current state & localization ("in NW hallway").
+      - #badge("Cognitive", color: rgb("#7c3aed")) Mission goals (deliver item to Room 118).
+
+    #v(2.5pt)
+    #highlight("Autonomous Vehicle Pipeline:", color: rgb("#0369a1"))
+    #v(1.5pt)
+    #rounded-table(
+      columns: (1fr, 1.5fr),
+      inset: 2.5pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#e0f2fe") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.4pt)[Stage]],
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.4pt)[Sub-Modules & Tasks]],
+      [*Sensors*], [Cameras, Radar, LiDAR, GPS / IMU],
+      [*Perception*], [Obstacle Detection, Free Space, Localisation],
+      [*Planning*], [Route $arrow.r$ Behavioral $arrow.r$ Trajectory],
+      [*Control*], [PID, MPC $arrow.r$ Drive-By-Wire (DBW) Actuators]
+    )
+  ]
+
+  #colbreak()
+
+  // --- 3. SHAKEY & STRIPS PLANNING ---
+  #card(title: "3. Shakey & STRIPS Planning", color: rgb("#d97706"), icon-name: "bot")[
+    - #highlight("Shakey the Robot (1967-69, SRI / DARPA):", color: rgb("#b45309")) First mobile AI robot using predicate logic planning.
+    - #highlight("Means-Ends Analysis:", color: rgb("#0f172a")) If goal is unreachable in one step, selects action reducing state difference ($Delta$).
+    
+    #v(2.5pt)
+    #mini-block(title: "STRIPS Recursive Planning Algorithm", badge-txt: "Stack-Based", color: rgb("#d97706"))[
+      #grid(
+        columns: (auto, 1fr),
+        gutter: 4.5pt,
+        row-gutter: 2.5pt,
+        align: (left + top, left + top),
+        num-bullet("1", color: rgb("#d97706")), [Evaluate difference: $Delta = "Goal" - "Current State"$. If $Delta = emptyset$, terminate.],
+        num-bullet("2", color: rgb("#d97706")), [Find operator from Difference Table whose *Add-List* negates $Delta$.],
+        num-bullet("3", color: rgb("#d97706")), [Bind variables & examine operator preconditions.],
+        num-bullet("4", color: rgb("#dc2626")), [*Precondition FALSE:* Push goal to stack, set failed precondition as new Subgoal, & recurse.],
+        num-bullet("5", color: rgb("#059669")), [*Preconditions TRUE:* Push operator to plan stack, update world model copy, pop & resume.]
+      )
+    ]
+  ]
+
+  // --- 4. STRIPS OPERATOR LOGIC ---
+  #card(title: "4. STRIPS Predicates & Operator Anatomy", color: rgb("#7c3aed"), icon-name: "code")[
+    - #highlight("Predicates:", color: rgb("#6d28d9")) UPPERCASE statements evaluating to $"TRUE"/"FALSE"$ (e.g. $text("INROOM")(text("IT"), R_1)$, $text("CONNECTS")(D_1, R_1, R_2)$).
+    
+    #v(2pt)
+    #rounded-table(
+      columns: (1fr, 1.35fr, 1.05fr, 0.85fr),
+      inset: 2.5pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#f3e8ff") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#6b21a8"), weight: "bold", size: 6.2pt)[Operator]],
+      [#text(fill: rgb("#6b21a8"), weight: "bold", size: 6.2pt)[Preconditions]],
+      [#text(fill: rgb("#6b21a8"), weight: "bold", size: 6.2pt)[Add-List]],
+      [#text(fill: rgb("#6b21a8"), weight: "bold", size: 6.2pt)[Delete-List]],
+      
+      [#text(weight: "bold")[GOTODOOR\ (IT, dx)]],
+      [
+        #text(size: 5.6pt)[$text("INROOM")("IT", r_k)$]        #text(size: 5.6pt)[$text("CONNECT")(d_x, r_k, r_m)$]
+      ],
+      [#text(size: 5.6pt)[$text("NEXTTO")("IT", d_x)$]],
+      [#text(size: 5.6pt)[---]],
+
+      [#text(weight: "bold")[GOTHRU\ (IT, dx)]],
+      [
+        #text(size: 5.6pt)[$text("CONNECT")(d_x, r_k, r_m)$]        #text(size: 5.6pt)[$text("NEXTTO")("IT", d_x)$]        #text(size: 5.6pt)[$text("STATUS")(d_x, "OPEN")$]
+      ],
+      [#text(size: 5.6pt)[$text("INROOM")("IT", r_m)$]],
+      [#text(size: 5.6pt)[$text("INROOM")("IT", r_k)$]]
+    )
+    #v(2pt)
+    - #highlight("Generated Plan:", color: rgb("#0f172a")) Stack sequence: $text("GOTODOOR")(text("IT"), D_1) arrow.r text("GOTHRUDOOR")(text("IT"), D_1)$.
+  ]
+
+  #colbreak()
+
+  // --- 5. WAREHOUSE STRIPS CASE STUDY ---
+  #card(title: "5. Warehouse STRIPS Case Study", color: rgb("#059669"), icon-name: "compass")[
+    #highlight("Warehouse Layout:", color: rgb("#047857")) Locations Charging ($C$), Storage ($S$), Packing ($P$), Delivery ($D$).
+    
+    #v(2pt)
+    // Visual Warehouse Map
+    #block(
+      width: 100%,
+      fill: rgb("#ecfdf5"),
+      radius: 4pt,
+      inset: (x: 6pt, y: 4pt),
+      align(center)[
+        #grid(
+          columns: (auto, 1fr, auto),
+          rows: (auto, auto, auto),
+          gutter: 3pt,
+          align: (center + horizon, center + horizon, center + horizon),
+          badge("Storage S", color: rgb("#0284c7")),
+          text(size: 5.8pt, fill: rgb("#64748b"))[─── Path(S, P) ───],
+          badge("Packing P", color: rgb("#7c3aed")),
+          
+          text(size: 5.8pt, fill: rgb("#64748b"))[│ Path(S, C)],
+          [],
+          text(size: 5.8pt, fill: rgb("#dc2626"), weight: "bold")[│ Blocked(P, D) ✖],
+          
+          badge("Charging C", color: rgb("#059669")),
+          text(size: 5.8pt, fill: rgb("#64748b"))[─── Path(C, D) ───],
+          badge("Delivery D", color: rgb("#d97706"))
+        )
+      ]
+    )
+
+    #v(2pt)
+    #rounded-table(
+      columns: (0.95fr, 1.25fr, 0.95fr, 0.95fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#d1fae5") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#065f46"), weight: "bold", size: 6.1pt)[Operator]],
+      [#text(fill: rgb("#065f46"), weight: "bold", size: 6.1pt)[Preconditions]],
+      [#text(fill: rgb("#065f46"), weight: "bold", size: 6.1pt)[Add-List]],
+      [#text(fill: rgb("#065f46"), weight: "bold", size: 6.1pt)[Delete-List]],
+      
+      [#text(weight: "bold")[Move(x, y)]],
+      [
+        #text(size: 5.6pt)[$text("Path")(x, y)$]        #text(size: 5.6pt)[$not text("Blocked")(x, y)$]        #text(size: 5.6pt)[$text("At")("Robot", x)$]
+      ],
+      [#text(size: 5.6pt)[$text("At")("Robot", y)$]],
+      [#text(size: 5.6pt)[$text("At")("Robot", x)$]],
+
+      [#text(weight: "bold")[PickUp(p, x)]],
+      [
+        #text(size: 5.6pt)[$text("At")(p, x)$]        #text(size: 5.6pt)[$text("At")("Robot", x)$]        #text(size: 5.6pt)[$text("HandEmpty")$]
+      ],
+      [#text(size: 5.6pt)[$text("Holding")(p)$]],
+      [
+        #text(size: 5.6pt)[$text("At")(p, x)$]        #text(size: 5.6pt)[$text("HandEmpty")$]
+      ],
+
+      [#text(weight: "bold")[PutDown(p, x)]],
+      [
+        #text(size: 5.6pt)[$text("Holding")(p)$]        #text(size: 5.6pt)[$text("At")("Robot", x)$]
+      ],
+      [
+        #text(size: 5.6pt)[$text("At")(p, x)$]        #text(size: 5.6pt)[$text("HandEmpty")$]
+      ],
+      [#text(size: 5.6pt)[$text("Holding")(p)$]]
+    )
+
+    #v(2pt)
+    - #highlight("Obstacle Contingency:", color: rgb("#0f172a")) Since $text("Blocked")(P, D)$ is TRUE, planner avoids path $S arrow.r P arrow.r D$ and selects detour:
+      #align(center)[#badge("Detour Plan:", color: rgb("#059669")) $text("Move")(C, S) arrow.r text("PickUp")(P_1, S) arrow.r text("Move")(S, C) arrow.r text("Move")(C, D) arrow.r text("PutDown")(P_1, D)$]
+  ]
+
+  // --- 6. EXAM TIP BOX ---
+  #tip-box(title: "HIGH-YIELD EXAM DISTINCTION (LECTURE 05)")[
+    *Deliberative Pros vs Cons:* Pro: Computes optimal, goal-directed solutions. Con: Fragile under uncertainty, high computational complexity, slow to react to dynamic changes.     *STRIPS Add/Delete Rule:* World state updates *only* by deleting predicates in Delete-List and appending predicates in Add-List upon successful precondition binding.
+  ]
+]
