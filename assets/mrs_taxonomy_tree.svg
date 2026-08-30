@@ -1,0 +1,64 @@
+<svg viewBox="0 0 420 145" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <filter id="tax-shad" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Root: MRS Architecture -->
+  <g filter="url(#tax-shad)">
+    <rect x="145" y="4" width="130" height="22" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+    <text x="210" y="19" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e293b">MRS Coordination Taxonomy</text>
+  </g>
+
+  <!-- Level 1 Connecting Lines -->
+  <path d="M 210 26 L 210 38 M 75 38 L 345 38 M 75 38 L 75 46 M 210 38 L 210 46 M 345 38 L 345 46" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+
+  <!-- Level 1 Nodes -->
+  <!-- Centralized -->
+  <g filter="url(#tax-shad)">
+    <rect x="25" y="46" width="100" height="22" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+    <text x="75" y="60" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#991b1b">Centralized</text>
+  </g>
+
+  <!-- Distributed -->
+  <g filter="url(#tax-shad)">
+    <rect x="150" y="46" width="120" height="22" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.1"/>
+    <text x="210" y="60" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#065f46">Distributed</text>
+  </g>
+
+  <!-- Hybrid -->
+  <g filter="url(#tax-shad)">
+    <rect x="295" y="46" width="100" height="22" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.1"/>
+    <text x="345" y="60" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#92400e">Hybrid</text>
+  </g>
+
+  <!-- Centralized Sub-branches -->
+  <path d="M 75 68 L 75 78 M 40 78 L 105 78 M 40 78 L 40 86 M 105 78 L 105 86" fill="none" stroke="#fca5a5" stroke-width="1.2"/>
+  <rect x="6" y="86" width="68" height="20" rx="3" fill="#ffffff" stroke="#f87171" stroke-width="0.9"/>
+  <text x="40" y="99" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#b91c1c">Fully Centralized</text>
+
+  <rect x="78" y="86" width="64" height="20" rx="3" fill="#ffffff" stroke="#f87171" stroke-width="0.9"/>
+  <text x="110" y="99" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#b91c1c">Cent. Allocation</text>
+
+  <!-- Distributed Sub-branches -->
+  <path d="M 210 68 L 210 78 M 180 78 L 255 78 M 180 78 L 180 86 M 255 78 L 255 86" fill="none" stroke="#6ee7b7" stroke-width="1.2"/>
+  <rect x="150" y="86" width="60" height="20" rx="3" fill="#ffffff" stroke="#34d399" stroke-width="0.9"/>
+  <text x="180" y="99" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#047857">Emergent</text>
+
+  <rect x="220" y="86" width="65" height="20" rx="3" fill="#ffffff" stroke="#34d399" stroke-width="0.9"/>
+  <text x="252" y="99" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#047857">Intentional</text>
+
+  <!-- Emergent Sub-branches -->
+  <path d="M 180 106 L 180 114 M 155 114 L 205 114 M 155 114 L 155 120 M 205 114 L 205 120" fill="none" stroke="#a7f3d0" stroke-width="1"/>
+  <rect x="135" y="120" width="42" height="18" rx="2" fill="#f0fdf4" stroke="#86efac" stroke-width="0.8"/>
+  <text x="156" y="132" text-anchor="middle" font-size="5.8" fill="#166534">Reactive</text>
+
+  <rect x="182" y="120" width="48" height="18" rx="2" fill="#f0fdf4" stroke="#86efac" stroke-width="0.8"/>
+  <text x="206" y="132" text-anchor="middle" font-size="5.8" fill="#166534">Behavior-B.</text>
+
+  <!-- Hybrid Sub-branch -->
+  <path d="M 345 68 L 345 86" fill="none" stroke="#fcd34d" stroke-width="1.2"/>
+  <rect x="305" y="86" width="80" height="20" rx="3" fill="#ffffff" stroke="#fbbf24" stroke-width="0.9"/>
+  <text x="345" y="99" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#b45309">Market-Based</text>
+</svg>

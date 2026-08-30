@@ -1635,3 +1635,98 @@
     *Range vs Societal Performance:* Wider communication range is *not* always better; excessive long-range broadcast leads to packet collisions and decreased group performance.     *Stigmergy Principle:* "Communicate only what others cannot easily observe themselves."     *Repel Scheme:* In clustered foraging, implicit repulsion outperforms fixed partitions by avoiding idle zones.
   ]
 ]
+
+#pagebreak()
+
+// =========================================================
+// PAGE 9: LECTURE 09 — MULTI-ROBOT COORDINATION TAXONOMY
+// =========================================================
+
+#header-banner("09", "Multi-Robot Control Architectures & Coordination Taxonomies", "MRS ARCHITECTURES")
+
+#columns(3, gutter: 8.5pt)[
+
+  // --- 1. COORDINATION SPECTRUM ---
+  #card(title: "1. The Coordination Spectrum", color: rgb("#4f46e5"), icon-name: "git-commit")[
+    - #highlight("Coordination Level:", color: rgb("#4338ca")) Dictates task decomposition, communication needs, and synchronization tightness.
+    
+    #v(2.0pt)
+    #image("assets/coordination_spectrum.svg", width: 100%)
+    
+    #v(2.0pt)
+    #rounded-table(
+      columns: (1.1fr, 1.3fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#e0e7ff") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#3730a3"), weight: "bold", size: 6.2pt)[Coordination Type]],
+      [#text(fill: rgb("#3730a3"), weight: "bold", size: 6.2pt)[Characteristics & Tasks]],
+      [*Loosely-Coordinated*], [Decomposable into subtasks; independent execution; minimal interaction (e.g. mapping, area search).],
+      [*Tightly Coordinated*], [Tasks *not decomposable*; continuous joint execution; high interaction (e.g. box carrying, aerial refueling).]
+    )
+  ]
+
+  // --- 2. TAXONOMY HIERARCHY ---
+  #card(title: "2. MRS Coordination Taxonomy", color: rgb("#0284c7"), icon-name: "git-branch")[
+    #v(1.0pt)
+    #image("assets/mrs_taxonomy_tree.svg", width: 100%)
+  ]
+
+  #colbreak()
+
+  // --- 3. CENTRALIZED APPROACHES ---
+  #card(title: "3. Centralized Approaches (Global Optimum)", color: rgb("#dc2626"), icon-name: "server")[
+    - #highlight("Core Principle:", color: rgb("#b91c1c")) Single leader plans for team; attempts global optimal coordination.
+    
+    #v(2.0pt)
+    #rounded-table(
+      columns: (1fr, 1.4fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#fee2e2") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#991b1b"), weight: "bold", size: 6.2pt)[Centralized Variant]],
+      [#text(fill: rgb("#991b1b"), weight: "bold", size: 6.2pt)[Mechanism & Trade-offs]],
+      [*Fully Centralized*], [Leader plans entire team actions as 1 large system. *Pros:* optimal plans. *Cons:* Intractable for $> text("few")$ robots, Single Point of Failure (SPOF), sluggish.],
+      [*Centralized Allocation*], [Single agent assigns tasks; robots execute individually. *Pros:* distributed execution. *Cons:* SPOF on allocator.]
+    )
+    
+    #v(2.0pt)
+    - #highlight("Unrealistic Assumptions:", color: rgb("#0f172a")) Assumes all info can be sent to leader and world doesn't change during plan construction.
+  ]
+
+  // --- 4. DISTRIBUTED APPROACHES ---
+  #card(title: "4. Distributed Approaches (Local Autonomy)", color: rgb("#059669"), icon-name: "share-2")[
+    - #highlight("Principle:", color: rgb("#047857")) No central authority; each robot plans locally based on sensory perception & neighbor comms.
+    - #highlight("Pros:", color: rgb("#065f46")) Ultra-fast response to dynamics, *no single point of failure*, minimal compute/comms, robust.
+    - #highlight("Cons:", color: rgb("#b91c1c")) Solutions often *sub-optimal*; cannot handle non-decomposable tasks easily.
+  ]
+
+  #colbreak()
+
+  // --- 5. DISTRIBUTED SUB-PARADIGMS & MARKET AUCTIONS ---
+  #card(title: "5. Sub-Paradigms & Hybrid Market Auctions", color: rgb("#d97706"), icon-name: "cpu")[
+    #rounded-table(
+      columns: (0.95fr, 1.45fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#fef3c7") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#92400e"), weight: "bold", size: 6.1pt)[Sub-Paradigm]],
+      [#text(fill: rgb("#92400e"), weight: "bold", size: 6.1pt)[Operation & Example]],
+      [*Emergent (Reactive)*], [Tight Sense-Act loop ($S arrow.r A$). Fast, simple; cannot plan (e.g. obstacle avoidance).],
+      [*Emergent (Behavior)*], [Structured local behaviors with state info. Fast, multi-task, no global plan.],
+      [*Intentional*], [Explicit goals & peer negotiation without central planner (e.g. drone trajectory sharing).],
+      [*Hybrid (Market)*], [Task auctioneer + distributed bidding based on local cost functions.]
+    )
+    
+    #v(2.0pt)
+    #image("assets/market_based_auction.svg", width: 100%)
+  ]
+
+  // --- 6. EXAM TIP BOX ---
+  #tip-box(title: "HIGH-YIELD EXAM DISTINCTION (LECTURE 09)")[
+    *Centralized vs Distributed:* Centralized yields global optimality but suffers from combinatorial explosion ($N$-robot intractability) and SPOF; Distributed provides real-time robustness at cost of global optimality.     *Intentional vs Emergent:* Intentional robots have explicit goals and deliberate with peers; Emergent swarms exhibit collective behavior solely from reactive local rules.     *Market-Based Auctions:* Sweet spot blending efficient centralized task allocation with resilient distributed execution.
+  ]
+]

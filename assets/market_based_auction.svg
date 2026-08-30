@@ -1,0 +1,62 @@
+<svg viewBox="0 0 380 115" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="auc-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 2 L 6 5 L 0 8 z" fill="#64748b" />
+    </marker>
+    <marker id="auc-arr-g" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 2 L 6 5 L 0 8 z" fill="#059669" />
+    </marker>
+    <filter id="auc-shad" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Container -->
+  <rect x="0" y="0" width="380" height="115" rx="6" fill="#fffbeb" stroke="#fde68a" stroke-width="0.8"/>
+
+  <!-- Step 1: Task Announcement -->
+  <g filter="url(#auc-shad)">
+    <rect x="10" y="12" width="100" height="42" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+    <text x="60" y="26" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#b45309">1. Auctioneer</text>
+    <text x="60" y="37" text-anchor="middle" font-size="6" fill="#475569">Announces Task $T_k$</text>
+    <text x="60" y="46" text-anchor="middle" font-size="5.5" fill="#78350f">Broadcasts Request</text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M 112 33 L 138 33" stroke="#d97706" stroke-width="1.5" marker-end="url(#auc-arr)"/>
+
+  <!-- Step 2: Bidding Robots -->
+  <g filter="url(#auc-shad)">
+    <rect x="142" y="10" width="115" height="95" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="199" y="23" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#1e293b">2. Robot Bidding</text>
+    
+    <!-- Robot 1 bid -->
+    <rect x="148" y="28" width="103" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+    <text x="154" y="40" font-size="6" font-weight="bold" fill="#475569">R1: Cost = 45</text>
+    
+    <!-- Robot 2 bid (Lowest winner) -->
+    <rect x="148" y="50" width="103" height="18" rx="3" fill="#ecfdf5" stroke="#059669" stroke-width="1.1"/>
+    <text x="154" y="62" font-size="6" font-weight="bold" fill="#065f46">R2: Cost = 18 ★</text>
+
+    <!-- Robot 3 bid -->
+    <rect x="148" y="72" width="103" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+    <text x="154" y="84" font-size="6" font-weight="bold" fill="#475569">R3: Cost = 32</text>
+  </g>
+
+  <!-- Arrow 2 to 3 -->
+  <path d="M 260 59 L 278 59" stroke="#059669" stroke-width="1.5" marker-end="url(#auc-arr-g)"/>
+
+  <!-- Step 3: Task Award & Distributed Execution -->
+  <g filter="url(#auc-shad)">
+    <rect x="282" y="12" width="90" height="92" rx="4" fill="#f0fdf4" stroke="#059669" stroke-width="1.1"/>
+    <text x="327" y="26" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#065f46">3. Award &amp; Run</text>
+    
+    <rect x="290" y="34" width="74" height="24" rx="3" fill="#ffffff" stroke="#34d399" stroke-width="0.8"/>
+    <text x="327" y="45" text-anchor="middle" font-size="6" font-weight="bold" fill="#047857">Awarded to R2</text>
+    <text x="327" y="53" text-anchor="middle" font-size="5.2" fill="#64748b">(Min Cost Winner)</text>
+
+    <text x="327" y="72" text-anchor="middle" font-size="5.8" fill="#1e293b">Distributed Local</text>
+    <text x="327" y="81" text-anchor="middle" font-size="5.8" fill="#1e293b">Plan Execution</text>
+    <text x="327" y="94" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#059669">Optimal &amp; Robust</text>
+  </g>
+</svg>

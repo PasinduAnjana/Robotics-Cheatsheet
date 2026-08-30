@@ -1,0 +1,50 @@
+<svg viewBox="0 0 380 95" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="cs-arr-b" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 2 L 6 5 L 0 8 z" fill="#0284c7" />
+    </marker>
+    <marker id="cs-arr-p" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 2 L 6 5 L 0 8 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+
+  <!-- Left: Loosely-Coordinated -->
+  <g transform="translate(10, 5)">
+    <rect x="0" y="0" width="170" height="85" rx="5" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+    <text x="85" y="14" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0369a1">Loosely-Coordinated</text>
+    
+    <!-- Independent Robot Paths (Mapping) -->
+    <circle cx="25" cy="35" r="4.5" fill="#0284c7"/>
+    <path d="M 25 35 Q 50 25 80 40 T 145 30" fill="none" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="3 2" marker-end="url(#cs-arr-b)"/>
+    <text x="32" y="32" font-size="5.5" font-weight="bold" fill="#0369a1">R1</text>
+
+    <circle cx="25" cy="65" r="4.5" fill="#059669"/>
+    <path d="M 25 65 Q 60 75 100 60 T 145 70" fill="none" stroke="#059669" stroke-width="1.4" stroke-dasharray="3 2" marker-end="url(#cs-arr-b)"/>
+    <text x="32" y="62" font-size="5.5" font-weight="bold" fill="#059669">R2</text>
+
+    <text x="85" y="80" text-anchor="middle" font-size="6" fill="#475569">Decomposable • Independent paths</text>
+  </g>
+
+  <!-- Right: Tightly Coordinated -->
+  <g transform="translate(200, 5)">
+    <rect x="0" y="0" width="170" height="85" rx="5" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1"/>
+    <text x="85" y="14" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#5b21b6">Tightly Coordinated</text>
+
+    <!-- Heavy Beam carried by R1 & R2 -->
+    <rect x="35" y="42" width="100" height="10" rx="2" fill="#cbd5e1" stroke="#475569" stroke-width="1"/>
+    <text x="85" y="50" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#1e293b">Heavy Object</text>
+
+    <!-- Robot 1 & Robot 2 underneath beam -->
+    <circle cx="45" cy="58" r="5" fill="#7c3aed"/>
+    <text x="45" y="70" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#5b21b6">R1</text>
+
+    <circle cx="125" cy="58" r="5" fill="#7c3aed"/>
+    <text x="125" y="70" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#5b21b6">R2</text>
+
+    <!-- Synchronous motion arrows -->
+    <path d="M 45 36 L 45 25" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#cs-arr-p)"/>
+    <path d="M 125 36 L 125 25" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#cs-arr-p)"/>
+
+    <text x="85" y="80" text-anchor="middle" font-size="6" fill="#475569">Non-decomposable • Continuous sync</text>
+  </g>
+</svg>
