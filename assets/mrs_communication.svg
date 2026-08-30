@@ -1,0 +1,51 @@
+<svg viewBox="0 0 380 95" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="comm-arr-b" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#0284c7" />
+    </marker>
+    <marker id="comm-arr-p" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#7c3aed" />
+    </marker>
+  </defs>
+
+  <!-- Left Box: Explicit Communication -->
+  <g transform="translate(10, 5)">
+    <rect x="0" y="0" width="170" height="85" rx="5" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+    <text x="85" y="14" text-anchor="middle" font-size="8" font-weight="bold" fill="#0369a1">Explicit: Direct Message</text>
+    
+    <rect x="15" y="32" width="40" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+    <text x="35" y="47" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0369a1">Robot A</text>
+
+    <!-- Radio Wave / Message Envelope -->
+    <path d="M 58 44 L 108 44" stroke="#0284c7" stroke-width="1.8" marker-end="url(#comm-arr-b)"/>
+    <rect x="68" y="28" width="34" height="12" rx="2" fill="#ffffff" stroke="#38bdf8" stroke-width="0.8"/>
+    <text x="85" y="37" text-anchor="middle" font-size="6" font-weight="bold" fill="#0284c7">GPS / State</text>
+
+    <rect x="115" y="32" width="40" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+    <text x="135" y="47" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0369a1">Robot B</text>
+
+    <text x="85" y="74" text-anchor="middle" font-size="6.2" fill="#64748b">Direct RF / Wi-Fi packet exchange</text>
+  </g>
+
+  <!-- Right Box: Implicit Communication (Stigmergy) -->
+  <g transform="translate(200, 5)">
+    <rect x="0" y="0" width="170" height="85" rx="5" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1"/>
+    <text x="85" y="14" text-anchor="middle" font-size="8" font-weight="bold" fill="#5b21b6">Implicit: Stigmergy (via World)</text>
+    
+    <rect x="12" y="32" width="38" height="24" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1"/>
+    <text x="31" y="47" text-anchor="middle" font-size="7" font-weight="bold" fill="#5b21b6">Robot A</text>
+
+    <!-- World modification box -->
+    <path d="M 52 40 L 64 36" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#comm-arr-p)"/>
+    <rect x="66" y="24" width="38" height="38" rx="4" fill="#ffffff" stroke="#c084fc" stroke-width="0.9"/>
+    <text x="85" y="38" text-anchor="middle" font-size="6" font-weight="bold" fill="#7c3aed">World</text>
+    <text x="85" y="49" text-anchor="middle" font-size="5.5" fill="#6b21a8">Pheromone /</text>
+    <text x="85" y="57" text-anchor="middle" font-size="5.5" fill="#6b21a8">Vacated Bay</text>
+
+    <path d="M 106 36 L 118 40" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#comm-arr-p)"/>
+    <rect x="120" y="32" width="38" height="24" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1"/>
+    <text x="139" y="47" text-anchor="middle" font-size="7" font-weight="bold" fill="#5b21b6">Robot B</text>
+
+    <text x="85" y="74" text-anchor="middle" font-size="6.2" fill="#64748b">Observation of cues &amp; side-effects</text>
+  </g>
+</svg>

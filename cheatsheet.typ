@@ -1520,3 +1520,118 @@
     *Pfield Advantages:* Intuitive continuous representation, compositional C++ behavioral libraries, extensible to 3D.     *Linear vs Exponential Drop-off:* Linear represents reflexivity ($y = m x + b$) but has boundary edge; Exponential provides smooth decay without jerky chattering.     *Harmonic Guarantee:* Only harmonic functions strictly eliminate all local minima traps mathematically.
   ]
 ]
+
+#pagebreak()
+
+// =========================================================
+// PAGE 8: LECTURE 08 — MULTI-ROBOT SYSTEMS & SWARMS
+// =========================================================
+
+#header-banner("08", "Multi-Robot Systems, Foraging & Swarm Formations", "MULTI-ROBOT SYSTEMS")
+
+#columns(3, gutter: 8.5pt)[
+
+  // --- 1. MRS FOUNDATIONS ---
+  #card(title: "1. Multi-Robot Systems (MRS) Foundations", color: rgb("#4f46e5"), icon-name: "users")[
+    - #highlight("Core Motivation:", color: rgb("#4338ca")) Scaling capability, redundancy, and spatial distribution beyond single-robot limits.
+    
+    #v(2.0pt)
+    #rounded-table(
+      columns: (1fr, 1fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#e0e7ff") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#3730a3"), weight: "bold", size: 6.2pt)[Why Multiple Robots?]],
+      [#text(fill: rgb("#3730a3"), weight: "bold", size: 6.2pt)[Key Challenges & Bottlenecks]],
+      [
+        - Faster execution & parallelism        - Robustness & fault tolerance        - Distributed sensing/action        - Specialist robot teams
+      ],
+      [
+        - Communication congestion        - Sensor/physical interference        - $N times$ testing & debugging        - Emergent unpredictability
+      ]
+    )
+
+    #v(2.0pt)
+    - #highlight("Coordination Spectrum:", color: rgb("#4338ca"))
+      - #badge("Loosely Coordinated", color: rgb("#0284c7")) Mapping, exploration, hazardous cleanup (low comms).
+      - #badge("Tightly Coordinated", color: rgb("#7c3aed")) Box pushing, heavy lifting, construction (tight sync).
+      - #badge("Task Allocation (MRTA)", color: rgb("#059669")) Formulated as Multi-Traveling Salesman (mTSP).
+  ]
+
+  // --- 2. CORE TASK ARCHETYPES ---
+  #card(title: "2. Core MRS Task Archetypes", color: rgb("#0284c7"), icon-name: "briefcase")[
+    #rounded-table(
+      columns: (0.9fr, 1.4fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#e0f2fe") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.2pt)[Task Archetype]],
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.2pt)[Definition & Robotic Application]],
+      [*Foraging*], [Collecting dispersed/clustered items to a depot/boundary.],
+      [*Consuming*], [Performing in-place work (assembly, machining, welding).],
+      [*Grazing*], [Complete surface coverage (lawn mowing, mine clearing).],
+      [*Formations*], [Maintaining geometric structure while moving (flocking).],
+      [*Object Transport*], [Joint multi-agent manipulation / cooperative carrying.]
+    )
+  ]
+
+  #colbreak()
+
+  // --- 3. FORAGING STRATEGIES ---
+  #card(title: "3. Foraging Dynamics & Distribution", color: rgb("#d97706"), icon-name: "compass")[
+    - #highlight("Foraging Benchmark:", color: rgb("#b45309")) Speed of completion depends heavily on item distribution (evenly spread vs clustered).
+    
+    #v(2.0pt)
+    #image("assets/foraging_strategies.svg", width: 100%)
+    
+    #v(2.0pt)
+    - #highlight("1. Explicit (Fixed Zones):", color: rgb("#0f172a")) Space divided into rigid areas. Optimal for uniform items; robots become idle if items are clustered.
+    - #highlight("2. Implicit (Repel Beacons):", color: rgb("#0f172a")) Omni-directional repulsion keeps robots distributed without central control. Minimizes robot contact.
+    - #highlight("3. Recruitment Signaling:", color: rgb("#0f172a")) Robot finding a food cluster turns on beacon $\to$ recruits nearby teammates.
+  ]
+
+  // --- 4. FORMATIONS & FLOCKING (BOIDS) ---
+  #card(title: "4. Swarm Formations & Flocking (Boids)", color: rgb("#7c3aed"), icon-name: "wind")[
+    - #highlight("Reynolds 3 Flocking Rules:", color: rgb("#6d28d9")) Emergent cohesion vs collision avoidance balance:
+    
+    #v(2.0pt)
+    #image("assets/flocking_rules.svg", width: 100%)
+    
+    #v(2.0pt)
+    - #highlight("1. Separation:", color: rgb("#dc2626")) Steer to avoid crowding/colliding with local flockmates ($180 degree$ repulsion).
+    - #highlight("2. Alignment:", color: rgb("#059669")) Steer towards the *average heading* ($bold(v)_("avg")$) of local flockmates.
+    - #highlight("3. Cohesion:", color: rgb("#0284c7")) Steer to move toward the *average centroid* ($bold(p)_("avg")$) of local flockmates.
+  ]
+
+  #colbreak()
+
+  // --- 5. MULTI-ROBOT COMMUNICATION ---
+  #card(title: "5. Multi-Robot Communication Taxonomy", color: rgb("#059669"), icon-name: "radio")[
+    #rounded-table(
+      columns: (1fr, 1.4fr),
+      inset: 2.2pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#d1fae5") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#065f46"), weight: "bold", size: 6.2pt)[Dimension]],
+      [#text(fill: rgb("#065f46"), weight: "bold", size: 6.2pt)[Taxonomy Categories]],
+      [*Range*], [None | Near (Local, scalable) | Infinite (Global, heavy)],
+      [*Topology*], [Broadcast (all hear) | Addressed | Tree | Graph/Mesh],
+      [*Bandwidth*], [High ("free") | Motion-related | Low | Zero]
+    )
+    
+    #v(2.0pt)
+    #image("assets/mrs_communication.svg", width: 100%)
+    
+    #v(2.0pt)
+    - #highlight("Explicit Comms:", color: rgb("#0f172a")) Direct message exchange (e.g. drones broadcasting GPS/velocities; "Help, I'm stuck").
+    - #highlight("Implicit Comms (Stigmergy):", color: rgb("#0f172a")) Communication through the environment (e.g. sensing markers, seeing a loading bay vacate).
+  ]
+
+  // --- 6. EXAM TIP BOX ---
+  #tip-box(title: "HIGH-YIELD EXAM DISTINCTION (LECTURE 08)")[
+    *Range vs Societal Performance:* Wider communication range is *not* always better; excessive long-range broadcast leads to packet collisions and decreased group performance.     *Stigmergy Principle:* "Communicate only what others cannot easily observe themselves."     *Repel Scheme:* In clustered foraging, implicit repulsion outperforms fixed partitions by avoiding idle zones.
+  ]
+]
