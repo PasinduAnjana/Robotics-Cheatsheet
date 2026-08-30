@@ -1743,24 +1743,25 @@
 
   // --- 1. MARKET ARCHITECTURE & ECONOMIC METAPHOR ---
   #card(title: "1. Market Architecture & Economic Metaphor", color: rgb("#4f46e5"), icon-name: "dollar-sign")[
-    - #highlight("Economic Premise:", color: rgb("#4338ca")) Robots act as self-interested economic agents seeking to maximize individual profit.
+    - #highlight("Market Premise:", color: rgb("#4338ca")) Goal points to visit are the *main commodity* exchanged in the market.
     
     #v(2.0pt)
     #image("assets/market_math_flow.svg", width: 100%)
     
     #v(2.0pt)
-    - #highlight("Global Optimization:", color: rgb("#0f172a")) Team profit is the sum of individual profits:
-      #align(center)[#badge("Team Profit:", color: rgb("#059669")) $Pi_("team") = sum_(i=1)^n Pi_i = sum_(i=1)^n (R_i - C_i)$]
-    - Maximizing individual utility naturally drives the entire system toward *Pareto-optimal task distribution*.
+    - #highlight("Team Profit = Sum of Individual Profits:", color: rgb("#059669"))
+      - #text(size: 6.8pt)[When individual robots *maximize profit*, the whole team gains.]
+      - Moves global solution towards optimum without centralized planning.
   ]
 
   // --- 2. PRICING, ROLES & COOPERATION ---
   #card(title: "2. Pricing Dynamics & Specialist Roles", color: rgb("#d97706"), icon-name: "trending-up")[
-    - #highlight("Revenue", color: rgb("#b45309")) ($R$): $R = N_("cells") times w$ (info gain from unknown cells near target).
-    - #highlight("Cost", color: rgb("#b91c1c")) ($C$): $C = f("distance", "energy")$ to reach and execute task.
-    - #highlight("Supply & Demand:", color: rgb("#0f172a")) Prices serve as *low-bandwidth signals* summarizing aggregate utility without heavy map transfers.
-    - #highlight("Cooperation vs Competition:", color: rgb("#0f172a"))
-      - *Complementary specialists cooperate* (e.g. grasper + transporter form joint "pick & place" service).
+    - #highlight("Cost:", color: rgb("#b91c1c")) Based on distance traveled to reach goal.
+    - #highlight("Revenue:", color: rgb("#b45309")) Based on information gained by reaching goal:
+      #align(center)[#badge("Formula", color: rgb("#d97706")) $R = (text("# of unknown cells near goal")) times (text("weighting factor"))$]
+    - #highlight("Prices Determined by Supply & Demand:", color: rgb("#0f172a")) Low-bandwidth mechanisms for communicating aggregate information (map info doesn't need to be communicated repeatedly).
+    - #highlight("Competition vs. Coordination:", color: rgb("#0f172a"))
+      - *Complementary robots cooperate* (e.g. grasper + transporter offer combined "pick up and place" service).
       - *Similar robots compete*, driving prices down.
   ]
 

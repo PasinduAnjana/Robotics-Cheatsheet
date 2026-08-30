@@ -1,8 +1,5 @@
 <svg viewBox="0 0 390 105" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
   <defs>
-    <marker id="m-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
-      <path d="M 0 2 L 6 5 L 0 8 z" fill="#64748b" />
-    </marker>
     <filter id="m-shad" x="-5%" y="-5%" width="110%" height="115%">
       <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.08"/>
     </filter>
@@ -11,44 +8,45 @@
   <!-- Container -->
   <rect x="0" y="0" width="390" height="105" rx="6" fill="#fffbeb" stroke="#fde68a" stroke-width="0.8"/>
 
-  <!-- Box 1: Revenue Model -->
+  <!-- Box 1: Revenue -->
   <g filter="url(#m-shad)">
-    <rect x="10" y="10" width="115" height="85" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
-    <text x="67" y="24" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#b45309">Revenue (R)</text>
-    <rect x="18" y="32" width="99" height="24" rx="3" fill="#fef3c7"/>
-    <text x="67" y="44" text-anchor="middle" font-size="6.8" font-weight="bold" fill="#92400e">R = N_cells · w</text>
-    <text x="67" y="52" text-anchor="middle" font-size="5.5" fill="#78350f">Information Gained</text>
-    <text x="67" y="72" text-anchor="middle" font-size="6" fill="#475569">Unknown cells near</text>
-    <text x="67" y="82" text-anchor="middle" font-size="6" fill="#475569">frontier target goal</text>
+    <rect x="8" y="10" width="124" height="85" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+    <text x="70" y="24" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#b45309">Revenue (R)</text>
+    <text x="70" y="35" text-anchor="middle" font-size="5.8" fill="#475569">Based on information gained</text>
+    <rect x="13" y="42" width="114" height="22" rx="3" fill="#fef3c7"/>
+    <text x="70" y="53" text-anchor="middle" font-size="5.4" font-weight="bold" fill="#92400e">R = (# of unknown cells)</text>
+    <text x="70" y="61" text-anchor="middle" font-size="5.4" font-weight="bold" fill="#92400e">x (weighting factor)</text>
+    <text x="70" y="80" text-anchor="middle" font-size="5.5" fill="#64748b">Information gained near goal</text>
   </g>
 
   <!-- Minus Symbol -->
-  <circle cx="138" cy="52" r="9" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
-  <text x="138" y="56" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626">−</text>
+  <circle cx="143" cy="52" r="9" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <text x="143" y="56" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626">−</text>
 
-  <!-- Box 2: Cost Model -->
+  <!-- Box 2: Cost -->
   <g filter="url(#m-shad)">
-    <rect x="150" y="10" width="110" height="85" rx="4" fill="#ffffff" stroke="#dc2626" stroke-width="1"/>
-    <text x="205" y="24" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#991b1b">Cost (C)</text>
-    <rect x="158" y="32" width="94" height="24" rx="3" fill="#fee2e2"/>
-    <text x="205" y="44" text-anchor="middle" font-size="6.8" font-weight="bold" fill="#b91c1c">C = f(Distance)</text>
-    <text x="205" y="52" text-anchor="middle" font-size="5.5" fill="#991b1b">Path Length / Energy</text>
-    <text x="205" y="72" text-anchor="middle" font-size="6" fill="#475569">Travel distance &amp;</text>
-    <text x="205" y="82" text-anchor="middle" font-size="6" fill="#475569">navigational risk</text>
+    <rect x="154" y="10" width="106" height="85" rx="4" fill="#ffffff" stroke="#dc2626" stroke-width="1"/>
+    <text x="207" y="24" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#991b1b">Cost</text>
+    <text x="207" y="35" text-anchor="middle" font-size="5.8" fill="#475569">Based on distance traveled</text>
+    <rect x="160" y="42" width="94" height="22" rx="3" fill="#fee2e2"/>
+    <text x="207" y="53" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#b91c1c">Distance traveled</text>
+    <text x="207" y="61" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#b91c1c">to reach goal</text>
+    <text x="207" y="80" text-anchor="middle" font-size="5.5" fill="#64748b">Travel cost on grid</text>
   </g>
 
   <!-- Equals Symbol -->
-  <circle cx="273" cy="52" r="9" fill="#ecfdf5" stroke="#059669" stroke-width="1"/>
-  <text x="273" y="56" text-anchor="middle" font-size="11" font-weight="bold" fill="#059669">=</text>
+  <circle cx="270" cy="52" r="9" fill="#ecfdf5" stroke="#059669" stroke-width="1"/>
+  <text x="270" y="56" text-anchor="middle" font-size="11" font-weight="bold" fill="#059669">=</text>
 
-  <!-- Box 3: Individual & Team Profit -->
+  <!-- Box 3: Team Profit -->
   <g filter="url(#m-shad)">
-    <rect x="285" y="10" width="95" height="85" rx="4" fill="#ffffff" stroke="#059669" stroke-width="1"/>
-    <text x="332" y="24" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#065f46">Profit (Π)</text>
-    <rect x="291" y="32" width="83" height="24" rx="3" fill="#d1fae5"/>
-    <text x="332" y="44" text-anchor="middle" font-size="6.8" font-weight="bold" fill="#047857">Π_i = R_i − C_i</text>
-    <text x="332" y="52" text-anchor="middle" font-size="5.5" fill="#065f46">Self-Interest</text>
-    <text x="332" y="72" text-anchor="middle" font-size="6.2" font-weight="bold" fill="#047857">Team Opt:</text>
-    <text x="332" y="82" text-anchor="middle" font-size="6" font-weight="bold" fill="#065f46">Π_team = Σ Π_i</text>
+    <rect x="280" y="10" width="102" height="85" rx="4" fill="#ffffff" stroke="#059669" stroke-width="1"/>
+    <text x="331" y="24" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#065f46">Team Profit</text>
+    <text x="331" y="35" text-anchor="middle" font-size="5.6" fill="#475569">Sum of individual profits</text>
+    <rect x="285" y="42" width="92" height="22" rx="3" fill="#d1fae5"/>
+    <text x="331" y="53" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#047857">Team profit =</text>
+    <text x="331" y="61" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#047857">sum of indiv. profits</text>
+    <text x="331" y="76" text-anchor="middle" font-size="5.2" fill="#065f46">When robots maximize</text>
+    <text x="331" y="85" text-anchor="middle" font-size="5.2" fill="#065f46">profit, whole team gains</text>
   </g>
 </svg>
