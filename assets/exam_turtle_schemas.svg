@@ -1,0 +1,64 @@
+<svg viewBox="0 0 420 120" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="t-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 2 L 6 5 L 0 8 z" fill="#64748b" />
+    </marker>
+    <filter id="t-shad" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Left: Behavior 1 (Dig Upward) -->
+  <g transform="translate(10, 8)">
+    <rect x="0" y="0" width="195" height="104" rx="5" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+    <text x="97" y="16" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#b45309">B1: Dig Upward from Nest</text>
+
+    <!-- Stimulus / Perceptual Schema -->
+    <g filter="url(#t-shad)">
+      <rect x="10" y="24" width="76" height="42" rx="3" fill="#ffffff" stroke="#d97706" stroke-width="0.9"/>
+      <text x="48" y="36" text-anchor="middle" font-size="6" font-weight="bold" fill="#b45309">S_temp,gravity</text>
+      <text x="48" y="47" text-anchor="middle" font-size="5" fill="#475569">Warm sand heat</text>
+      <text x="48" y="57" text-anchor="middle" font-size="5" fill="#475569">+ Gravity pull</text>
+    </g>
+
+    <path d="M 88 45 L 108 45" stroke="#d97706" stroke-width="1.3" marker-end="url(#t-arr)"/>
+
+    <!-- Motor Schema / Response -->
+    <g filter="url(#t-shad)">
+      <rect x="110" y="24" width="76" height="42" rx="3" fill="#ffffff" stroke="#059669" stroke-width="0.9"/>
+      <text x="148" y="36" text-anchor="middle" font-size="6" font-weight="bold" fill="#065f46">R_dig_up</text>
+      <text x="148" y="47" text-anchor="middle" font-size="5" fill="#475569">Flipper shoveling</text>
+      <text x="148" y="57" text-anchor="middle" font-size="5" fill="#475569">upward thrust</text>
+    </g>
+
+    <rect x="10" y="74" width="176" height="20" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.7"/>
+    <text x="98" y="87" text-anchor="middle" font-size="6.2" font-weight="bold" fill="#78350f">B1[S_temp, gravity] = R_dig_up</text>
+  </g>
+
+  <!-- Right: Behavior 2 (Crawl to Ocean) -->
+  <g transform="translate(215, 8)">
+    <rect x="0" y="0" width="195" height="104" rx="5" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+    <text x="97" y="16" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0369a1">B2: Crawl toward Ocean</text>
+
+    <!-- Stimulus / Perceptual Schema -->
+    <g filter="url(#t-shad)">
+      <rect x="10" y="24" width="76" height="42" rx="3" fill="#ffffff" stroke="#0284c7" stroke-width="0.9"/>
+      <text x="48" y="36" text-anchor="middle" font-size="6" font-weight="bold" fill="#0369a1">S_light,sound</text>
+      <text x="48" y="47" text-anchor="middle" font-size="5" fill="#475569">Horizon light</text>
+      <text x="48" y="57" text-anchor="middle" font-size="5" fill="#475569">+ Wave thuds</text>
+    </g>
+
+    <path d="M 88 45 L 108 45" stroke="#0284c7" stroke-width="1.3" marker-end="url(#t-arr)"/>
+
+    <!-- Motor Schema / Response -->
+    <g filter="url(#t-shad)">
+      <rect x="110" y="24" width="76" height="42" rx="3" fill="#ffffff" stroke="#059669" stroke-width="0.9"/>
+      <text x="148" y="36" text-anchor="middle" font-size="6" font-weight="bold" fill="#065f46">R_crawl_ocean</text>
+      <text x="148" y="47" text-anchor="middle" font-size="5" fill="#475569">Forward crawling</text>
+      <text x="148" y="57" text-anchor="middle" font-size="5" fill="#475569">towards ocean</text>
+    </g>
+
+    <rect x="10" y="74" width="176" height="20" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.7"/>
+    <text x="98" y="87" text-anchor="middle" font-size="6.2" font-weight="bold" fill="#0369a1">B2[S_light, sound] = R_crawl_ocean</text>
+  </g>
+</svg>
