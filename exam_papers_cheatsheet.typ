@@ -3,7 +3,7 @@
   paper: "a4",
   flipped: true,
   fill: rgb("#ffffff"),
-  margin: (x: 0.8cm, y: 0.7cm),
+  margin: (x: 0.8cm, top: 0.65cm, bottom: 0.55cm),
   header: none,
   footer: context {
     let page_num = counter(page).get().first()
@@ -15,7 +15,7 @@
     )
     align(right + horizon)[
       #text(size: 7.2pt, fill: rgb("#64748b"), weight: "bold")[
-        PAGE #page_num
+        PAGE #page_num OF 5
       ]
     ]
   }
@@ -25,7 +25,7 @@
   font: ("Ubuntu", "DejaVu Sans", "Liberation Sans", "Noto Sans"),
   size: 6.8pt,
   fill: rgb("#1e293b"),
-  spacing: 110%,
+  spacing: 108%,
   lang: "en"
 )
 
@@ -74,7 +74,7 @@
     width: 100%,
     fill: rgb("#ffffff"),
     radius: 4.0pt,
-    inset: 5.0pt,
+    inset: 4.8pt,
     stroke: 0.6pt + color.lighten(60%),
     [
       #block(
@@ -248,7 +248,7 @@
   #card(title: "2.1 Robotic Architectural Paradigms", color: rgb("#4f46e5"))[
     #v(1pt)
     #image("assets/exam_paradigms.svg", width: 100%)
-    #v(2pt)
+    #v(1.5pt)
     - #highlight("1. Hierarchical / Deliberative (SPA):", color: rgb("#1d4ed8"))
       - Sense $arrow.r$ Plan $arrow.r$ Act. Builds monolithic *Global World Model*.
       - *Limitation (Frame Problem):* Slow model updates; fragile to environment changes (e.g. *Shakey* with STRIPS).
@@ -257,7 +257,13 @@
       - *Subsumption:* Higher layers suppress/inhibit lower layers (Brooks).
     - #highlight("3. Hybrid (Plan-SPA):", color: rgb("#6d28d9"))
       - 3-Layer: Deliberative $arrow.r$ Sequencer $arrow.r$ Reactive execution.
+
+    #v(2.0pt)
+    #highlight("Subsumption Architecture (Stay-In-Middle):", color: rgb("#4338ca"))
+    #image("assets/exam_subsumption_corridor.svg", width: 100%)
   ]
+
+  #colbreak()
 
   // --- 2.2 MARR'S 3 LEVELS ---
   #card(title: "2.2 Marr's Three Information-Processing Levels", color: rgb("#0284c7"))[
@@ -271,8 +277,6 @@
     - *S&R Robot:* L1 = Find survivors in rubble; L2 = Vector sum of FLIR thermal + $"CO"_2$ gas centroids; L3 = FLIR sensor, ARM MCU, DC motors.
     - #badge("Note:", color: rgb("#dc2626")) Levels 1 & 2 are abstract; *only Level 3 differentiates biology from robots*.
   ]
-
-  #colbreak()
 
   // --- 2.3 BIOLOGICAL MAPPINGS ---
   #card(title: "2.3 Biological Inspiration to Robotic Mappings", color: rgb("#059669"))[
@@ -313,7 +317,7 @@
     #highlight("Mathematical S-R Schema Notation:", color: rgb("#4c1d95"))
     #align(center)[#badge("Notation", color: rgb("#7c3aed")) $ {B : S arrow.r R} quad "or" quad B[S] = R $]
 
-    #v(2.0pt)
+    #v(1.5pt)
     #image("assets/exam_turtle_schemas.svg", width: 100%)
 
     #v(1.5pt)
@@ -387,7 +391,7 @@
       fill: rgb("#0f172a"),
       radius: 3pt,
       inset: 4pt,
-      text(fill: rgb("#f8fafc"), font: ("JetBrains Mono", "Courier"), size: 5.2pt)[
+      text(fill: rgb("#f8fafc"), font: ("Ubuntu", "DejaVu Sans"), size: 5.2pt)[
 ```cpp
 enum Releaser { PRESENT, NOT_PRESENT };
 
@@ -417,7 +421,7 @@ void ParentBirdControlLoop() {
       fill: rgb("#0f172a"),
       radius: 3pt,
       inset: 4pt,
-      text(fill: rgb("#f8fafc"), font: ("JetBrains Mono", "Courier"), size: 5.2pt)[
+      text(fill: rgb("#f8fafc"), font: ("Ubuntu", "DejaVu Sans"), size: 5.2pt)[
 ```cpp
 void ForagerBeeControlLoop() {
   while (TRUE) {
@@ -449,7 +453,7 @@ void ForagerBeeControlLoop() {
       fill: rgb("#0f172a"),
       radius: 3pt,
       inset: 4pt,
-      text(fill: rgb("#f8fafc"), font: ("JetBrains Mono", "Courier"), size: 5.2pt)[
+      text(fill: rgb("#f8fafc"), font: ("Ubuntu", "DejaVu Sans"), size: 5.2pt)[
 ```cpp
 void FollowerAntControlLoop() {
   while (TRUE) {
@@ -521,6 +525,9 @@ void FollowerAntControlLoop() {
       - *1. Random Noise / Perturbation:* Heuristic random push; simple but sub-optimal.
       - *2. Harmonic Functions ($nabla^2 phi = 0$):* Mathematically guarantees no local minima; computationally heavy.
       - *3. Navigation Templates (NaTs) / Informed Redirection:* Feeds strategic goal direction to route around obstacle.
+
+    #v(2.0pt)
+    #image("assets/exam_local_minima_grid.svg", width: 100%)
   ]
 
   #colbreak()
@@ -665,41 +672,5 @@ void FollowerAntControlLoop() {
       - *Robot A:* $"Profit" = 150 - 50 = bold(100)$.
       - *Robot B:* $"Profit" = 150 + 150 - 80 = bold(220)$.
       - *Robot K:* $"Profit" = bold(0)$. Verification: $"Team Profit" = 450 - 130 = bold(320)$.
-  ]
-]
-
-#pagebreak()
-
-// =========================================================
-// PAGE 6: APPENDIX (VECTOR EXAM DIAGRAMS)
-// =========================================================
-
-#header-banner("APPENDIX", "Appendix: Exam Vector Diagrams", "EXAM VISUALIZATIONS")
-
-#columns(2, gutter: 10pt)[
-
-  // --- D1: SUBSUMPTION CORRIDOR ---
-  #card(title: "D1: Robot Subsumption Navigation Flowchart (Stay-In-Middle)", color: rgb("#4f46e5"))[
-    - #highlight("Architecture:", color: rgb("#4338ca")) Rodney Brooks' Subsumption Architecture for corridor navigation with 3 horizontal layers:
-      - *Layer 2 (STAY-IN-MIDDLE):* `LOOK (PS)` feeds corridor width to `STAY IN MIDDLE (MS)` which outputs heading to middle.
-      - *Layer 1 (OBSTACLE AVOIDANCE):* `WANDER` outputs random forces; `AVOID` suppresses `WANDER` via circle `S` (Suppression).
-      - *Layer 0 (REFLEX/COLLIDE):* `FEEL FORCE` $arrow.r$ `RUN AWAY`, `TURN`, `FORWARD`. `SONAR` polar plot triggers high-priority `HALT` to `FORWARD`.
-    
-    #v(3pt)
-    #image("assets/exam_subsumption_corridor.svg", width: 100%)
-  ]
-
-  // --- D2: LOCAL MINIMA GRID ---
-  #card(title: "D2: Potential Field Local Minima Trapping Grid", color: rgb("#dc2626"))[
-    - #highlight("2D Vector Navigation Grid:", color: rgb("#b91c1c"))
-      - Robot node $bold(R)$ on left; Goal node $bold(G)$ on right; Obstacle node $bold(O)$ in direct straight-line path.
-      - Vectors far from obstacle point directly towards $bold(G)$.
-      - Vectors near obstacle diverge around $bold(O)$.
-      - Directly in front of obstacle, opposing vectors meet:
-        #align(center)[#badge("Local Minima Condition", color: rgb("#dc2626")) $bold(V)_("attractive") + bold(V)_("repulsive") = bold(0)$]
-      - The net force is zero; the robot is trapped in deadlock.
-    
-    #v(3pt)
-    #image("assets/exam_local_minima_grid.svg", width: 100%)
   ]
 ]
