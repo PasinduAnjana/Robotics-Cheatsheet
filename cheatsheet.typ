@@ -1758,7 +1758,15 @@
   #card(title: "2. Pricing Dynamics & Specialist Roles", color: rgb("#d97706"), icon-name: "trending-up")[
     - #highlight("Cost:", color: rgb("#b91c1c")) Based on distance traveled to reach goal.
     - #highlight("Revenue:", color: rgb("#b45309")) Based on information gained by reaching goal:
-      #align(center)[#badge("Formula", color: rgb("#d97706")) $R = (text("# of unknown cells near goal")) times (text("weighting factor"))$]
+    #v(1.5pt)
+    #block(
+      width: 100%,
+      fill: rgb("#fef3c7"),
+      radius: 3.5pt,
+      inset: (x: 4pt, y: 3.0pt),
+      align(center)[#text(fill: rgb("#92400e"), weight: "bold", size: 6.8pt)[$ R = (text("# of unknown cells near goal")) times (text("weighting factor")) $]]
+    )
+    #v(1.5pt)
     - #highlight("Prices Determined by Supply & Demand:", color: rgb("#0f172a")) Low-bandwidth mechanisms for communicating aggregate information (map info doesn't need to be communicated repeatedly).
     - #highlight("Competition vs. Coordination:", color: rgb("#0f172a"))
       - *Complementary robots cooperate* (e.g. grasper + transporter offer combined "pick up and place" service).
@@ -1817,7 +1825,15 @@
   #card(title: "6. Experimental Validation & Results", color: rgb("#0284c7"), icon-name: "check-circle")[
     - #highlight("Testbed:", color: rgb("#0369a1")) 4--5 robots (FOG gyros, 16 sonars) across cluttered rooms, patio, and dynamic conference hall (100 people).
     - #highlight("Performance Metric:", color: rgb("#0f172a")) Exploration efficiency:
-      #align(center)[#badge("Efficiency:", color: rgb("#0284c7")) $"Efficiency" = frac("Area Covered" [m^2], "Distance Traveled" [m])$]
+    #v(1.5pt)
+    #block(
+      width: 100%,
+      fill: rgb("#e0f2fe"),
+      radius: 3.5pt,
+      inset: (x: 4pt, y: 3.0pt),
+      align(center)[#text(fill: rgb("#0369a1"), weight: "bold", size: 6.8pt)[$ "Exploration Efficiency" = frac("Area Covered" [m^2], "Distance Traveled" [m]) $]]
+    )
+    #v(1.5pt)
     - #highlight("Empirical Result:", color: rgb("#059669")) Market coordination improved efficiency over uncoordinated exploration by a factor of *3.4$times$*.
   ]
 
