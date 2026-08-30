@@ -1,0 +1,91 @@
+<svg viewBox="0 0 390 120" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="ea-arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 2 L 6 5 L 0 8 z" fill="#0284c7" />
+    </marker>
+    <filter id="ea-shad" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Container -->
+  <rect x="0" y="0" width="390" height="120" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="0.8"/>
+
+  <!-- Step 1: Generate Goals -->
+  <g filter="url(#ea-shad)">
+    <rect x="8" y="10" width="82" height="42" rx="4" fill="#ffffff" stroke="#0284c7" stroke-width="1"/>
+    <circle cx="18" cy="20" r="5.5" fill="#e0f2fe"/>
+    <text x="18" y="23" text-anchor="middle" font-size="6" font-weight="bold" fill="#0369a1">1</text>
+    <text x="50" y="23" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#0369a1">Generate</text>
+    <text x="49" y="34" text-anchor="middle" font-size="5.5" fill="#475569">Frontier goal</text>
+    <text x="49" y="44" text-anchor="middle" font-size="5.5" fill="#475569">points on grid</text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M 90 31 L 102 31" stroke="#0284c7" stroke-width="1.2" marker-end="url(#ea-arr)"/>
+
+  <!-- Step 2: Leader Sync -->
+  <g filter="url(#ea-shad)">
+    <rect x="104" y="10" width="82" height="42" rx="4" fill="#ffffff" stroke="#0284c7" stroke-width="1"/>
+    <circle cx="114" cy="20" r="5.5" fill="#e0f2fe"/>
+    <text x="114" y="23" text-anchor="middle" font-size="6" font-weight="bold" fill="#0369a1">2</text>
+    <text x="146" y="23" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#0369a1">Leader Sync</text>
+    <text x="145" y="34" text-anchor="middle" font-size="5.5" fill="#475569">Ensure goals are</text>
+    <text x="145" y="44" text-anchor="middle" font-size="5.5" fill="#475569">new &amp; unclaimed</text>
+  </g>
+
+  <!-- Arrow 2 to 3 -->
+  <path d="M 186 31 L 198 31" stroke="#0284c7" stroke-width="1.2" marker-end="url(#ea-arr)"/>
+
+  <!-- Step 3: Rank by Profit -->
+  <g filter="url(#ea-shad)">
+    <rect x="200" y="10" width="84" height="42" rx="4" fill="#ffffff" stroke="#0284c7" stroke-width="1"/>
+    <circle cx="210" cy="20" r="5.5" fill="#e0f2fe"/>
+    <text x="210" y="23" text-anchor="middle" font-size="6" font-weight="bold" fill="#0369a1">3</text>
+    <text x="244" y="23" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#0369a1">Rank Profit</text>
+    <text x="242" y="34" text-anchor="middle" font-size="5.5" fill="#475569">Greedy ranking</text>
+    <text x="242" y="44" text-anchor="middle" font-size="5.5" fill="#0284c7">Π = R_info − C_dist</text>
+  </g>
+
+  <!-- Arrow 3 to 4 -->
+  <path d="M 284 31 L 296 31" stroke="#0284c7" stroke-width="1.2" marker-end="url(#ea-arr)"/>
+
+  <!-- Step 4: Auction Goals -->
+  <g filter="url(#ea-shad)">
+    <rect x="298" y="10" width="84" height="42" rx="4" fill="#ffffff" stroke="#7c3aed" stroke-width="1"/>
+    <circle cx="308" cy="20" r="5.5" fill="#f3e8ff"/>
+    <text x="308" y="23" text-anchor="middle" font-size="6" font-weight="bold" fill="#7c3aed">4</text>
+    <text x="342" y="23" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#7c3aed">Auction Peer</text>
+    <text x="340" y="34" text-anchor="middle" font-size="5.5" fill="#475569">Sell if bid &gt;</text>
+    <text x="340" y="44" text-anchor="middle" font-size="5.5" fill="#6b21a8">self-profit + markup</text>
+  </g>
+
+  <!-- Arrow 4 down to 5 -->
+  <path d="M 340 52 L 340 64" stroke="#0284c7" stroke-width="1.2" marker-end="url(#ea-arr)"/>
+
+  <!-- Step 5: Explore Highest-Profit Goal -->
+  <g filter="url(#ea-shad)">
+    <rect x="250" y="66" width="132" height="44" rx="4" fill="#ffffff" stroke="#059669" stroke-width="1.1"/>
+    <circle cx="260" cy="77" r="5.5" fill="#d1fae5"/>
+    <text x="260" y="80" text-anchor="middle" font-size="6" font-weight="bold" fill="#059669">5</text>
+    <text x="320" y="79" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#065f46">5. Explore Top Goal</text>
+    <text x="316" y="90" text-anchor="middle" font-size="5.5" fill="#475569">Drive to highest profit site;</text>
+    <text x="316" y="100" text-anchor="middle" font-size="5.5" fill="#047857">Scan sensors upon arrival</text>
+  </g>
+
+  <!-- Arrow 5 left to 6 -->
+  <path d="M 250 88 L 198 88" stroke="#0284c7" stroke-width="1.2" marker-end="url(#ea-arr)"/>
+
+  <!-- Step 6: Spawn & Repeat -->
+  <g filter="url(#ea-shad)">
+    <rect x="55" y="66" width="140" height="44" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1.1"/>
+    <circle cx="66" cy="77" r="5.5" fill="#fef3c7"/>
+    <text x="66" y="80" text-anchor="middle" font-size="6" font-weight="bold" fill="#d97706">6-7</text>
+    <text x="130" y="79" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#92400e">6. Spawn &amp; 7. Iterate</text>
+    <text x="128" y="90" text-anchor="middle" font-size="5.5" fill="#475569">Add new cells; repeat loop</text>
+    <text x="128" y="100" text-anchor="middle" font-size="5.5" fill="#b45309">until whole map is complete</text>
+  </g>
+
+  <!-- Feedback Loop Arrow 6 back to 1 -->
+  <path d="M 55 88 L 45 88 L 45 54" fill="none" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#ea-arr)"/>
+</svg>

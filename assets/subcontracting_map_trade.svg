@@ -1,0 +1,48 @@
+<svg viewBox="0 0 380 90" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', sans-serif;">
+  <defs>
+    <marker id="sub-arr-b" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 2 L 6 5 L 0 8 z" fill="#0284c7" />
+    </marker>
+    <marker id="sub-arr-r" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 2 L 6 5 L 0 8 z" fill="#dc2626" />
+    </marker>
+  </defs>
+
+  <!-- Left: Subcontracting -->
+  <g transform="translate(10, 5)">
+    <rect x="0" y="0" width="170" height="80" rx="5" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+    <text x="85" y="14" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#991b1b">Dynamic Subcontracting</text>
+    
+    <circle cx="30" cy="42" r="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+    <text x="30" y="45" text-anchor="middle" font-size="6" font-weight="bold" fill="#991b1b">R1 Stuck</text>
+
+    <path d="M 42 42 L 115 42" stroke="#dc2626" stroke-width="1.5" marker-end="url(#sub-arr-r)"/>
+    <rect x="52" y="28" width="55" height="12" rx="2" fill="#ffffff" stroke="#fca5a5" stroke-width="0.7"/>
+    <text x="79" y="37" text-anchor="middle" font-size="5.2" font-weight="bold" fill="#b91c1c">Offload Site (Bid)</text>
+
+    <circle cx="130" cy="42" r="10" fill="#ecfdf5" stroke="#059669" stroke-width="1"/>
+    <text x="130" y="45" text-anchor="middle" font-size="6" font-weight="bold" fill="#065f46">R2 Near</text>
+
+    <text x="85" y="70" text-anchor="middle" font-size="5.8" fill="#475569">Reallocates goals if Real Cost &gt; Expected Cost</text>
+  </g>
+
+  <!-- Right: Map Trading -->
+  <g transform="translate(200, 5)">
+    <rect x="0" y="0" width="170" height="80" rx="5" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+    <text x="85" y="14" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0369a1">Map Data Trading</text>
+
+    <circle cx="30" cy="42" r="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+    <text x="30" y="45" text-anchor="middle" font-size="6" font-weight="bold" fill="#0369a1">Buyer R1</text>
+
+    <path d="M 42 37 L 115 37" stroke="#0284c7" stroke-width="1.4" marker-end="url(#sub-arr-b)"/>
+    <text x="78" y="33" text-anchor="middle" font-size="5" font-weight="bold" fill="#0284c7">Payment</text>
+
+    <path d="M 115 48 L 42 48" stroke="#059669" stroke-width="1.4" marker-end="url(#sub-arr-b)"/>
+    <text x="78" y="58" text-anchor="middle" font-size="5" font-weight="bold" fill="#059669">Grid Map Patch</text>
+
+    <circle cx="130" cy="42" r="10" fill="#ecfdf5" stroke="#059669" stroke-width="1"/>
+    <text x="130" y="45" text-anchor="middle" font-size="6" font-weight="bold" fill="#065f46">Seller R2</text>
+
+    <text x="85" y="72" text-anchor="middle" font-size="5.8" fill="#475569">Eliminates repeated area exploration</text>
+  </g>
+</svg>

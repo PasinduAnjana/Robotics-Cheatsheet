@@ -1730,3 +1730,98 @@
     *Centralized vs Distributed:* Centralized yields global optimality but suffers from combinatorial explosion ($N$-robot intractability) and SPOF; Distributed provides real-time robustness at cost of global optimality.     *Intentional vs Emergent:* Intentional robots have explicit goals and deliberate with peers; Emergent swarms exhibit collective behavior solely from reactive local rules.     *Market-Based Auctions:* Sweet spot blending efficient centralized task allocation with resilient distributed execution.
   ]
 ]
+
+#pagebreak()
+
+// =========================================================
+// PAGE 10: LECTURE 10 — MARKET-BASED MULTI-ROBOT COORDINATION
+// =========================================================
+
+#header-banner("10", "Market-Based Coordination, Exploration & Auctions", "MARKET APPROACH")
+
+#columns(3, gutter: 8.5pt)[
+
+  // --- 1. MARKET ARCHITECTURE & ECONOMIC METAPHOR ---
+  #card(title: "1. Market Architecture & Economic Metaphor", color: rgb("#4f46e5"), icon-name: "dollar-sign")[
+    - #highlight("Economic Premise:", color: rgb("#4338ca")) Robots act as self-interested economic agents seeking to maximize individual profit.
+    
+    #v(2.0pt)
+    #image("assets/market_math_flow.svg", width: 100%)
+    
+    #v(2.0pt)
+    - #highlight("Global Optimization:", color: rgb("#0f172a")) Team profit is the sum of individual profits:
+      #align(center)[#badge("Team Profit:", color: rgb("#059669")) $Pi_("team") = sum_(i=1)^n Pi_i = sum_(i=1)^n (R_i - C_i)$]
+    - Maximizing individual utility naturally drives the entire system toward *Pareto-optimal task distribution*.
+  ]
+
+  // --- 2. PRICING, ROLES & COOPERATION ---
+  #card(title: "2. Pricing Dynamics & Specialist Roles", color: rgb("#d97706"), icon-name: "trending-up")[
+    - #highlight("Revenue", color: rgb("#b45309")) ($R$): $R = N_("cells") times w$ (info gain from unknown cells near target).
+    - #highlight("Cost", color: rgb("#b91c1c")) ($C$): $C = f("distance", "energy")$ to reach and execute task.
+    - #highlight("Supply & Demand:", color: rgb("#0f172a")) Prices serve as *low-bandwidth signals* summarizing aggregate utility without heavy map transfers.
+    - #highlight("Cooperation vs Competition:", color: rgb("#0f172a"))
+      - *Complementary specialists cooperate* (e.g. grasper + transporter form joint "pick & place" service).
+      - *Similar robots compete*, driving prices down.
+  ]
+
+  #colbreak()
+
+  // --- 3. MULTI-ROBOT EXPLORATION ARCHITECTURE ---
+  #card(title: "3. Grid Exploration & Commodity Model", color: rgb("#0284c7"), icon-name: "grid")[
+    - #highlight("Grid Representation:", color: rgb("#0369a1")) 2D grid where cells are:
+      - #badge("0", color: rgb("#64748b")) Unknown
+      - #badge("+1", color: rgb("#dc2626")) Occupied
+      - #badge("-1", color: rgb("#059669")) Free Space
+    - #highlight("Main Commodity:", color: rgb("#0369a1")) Frontier goal points to explore.
+    - #highlight("Teammate Tracking:", color: rgb("#0f172a")) Robots broadcast $(x, y, t)$ coordinates; teammates' footprints are marked as *free space* to prevent obstacle misclassification.
+  ]
+
+  // --- 4. 7-STEP EXPLORATION & AUCTION ALGORITHM ---
+  #card(title: "4. Exploration & Auction Algorithm (7 Steps)", color: rgb("#7c3aed"), icon-name: "activity")[
+    #v(1.0pt)
+    #image("assets/exploration_algorithm.svg", width: 100%)
+    
+    #v(2.0pt)
+    #rounded-table(
+      columns: (0.45fr, 1.55fr),
+      inset: 2.0pt,
+      stroke: none,
+      fill: (_, row) => if row == 0 { rgb("#f3e8ff") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
+      align: top + left,
+      [#text(fill: rgb("#6b21a8"), weight: "bold", size: 6.0pt)[Step]],
+      [#text(fill: rgb("#6b21a8"), weight: "bold", size: 6.0pt)[Algorithmic Action]],
+      [*1. Generate*], [Select frontier goal points (greedy, quadtree, random).],
+      [*2. Sync*], [Check with leader/peers to ensure goals are unique.],
+      [*3. Rank*], [Rank candidate goals greedily by expected profit ($R - C$).],
+      [*4. Auction*], [Auction goals; sell if incoming bid $>$ self-profit + markup.],
+      [*5. Explore*], [When auctions close, navigate to top-ranked profit goal.],
+      [*6. Spawn*], [Sense environment at goal; spawn new frontier cells.],
+      [*7. Iterate*], [Repeat cycle until entire map is completely explored.]
+    )
+  ]
+
+  #colbreak()
+
+  // --- 5. REPLANNING & MAP TRADING ---
+  #card(title: "5. Replanning, Subcontracting & Trading", color: rgb("#059669"), icon-name: "refresh-cw")[
+    #v(1.0pt)
+    #image("assets/subcontracting_map_trade.svg", width: 100%)
+    
+    #v(2.0pt)
+    - #highlight("Dynamic Subcontracting:", color: rgb("#047857")) When unforeseen obstacles cause $C_("real") >> C_("expected")$ or a robot fails, expensive sites are re-auctioned.
+    - #highlight("Map Data Trading:", color: rgb("#047857")) Robots sell discovered map patches to peers, preventing duplicate scanning.
+  ]
+
+  // --- 6. EXPERIMENTAL VALIDATION & METRIC ---
+  #card(title: "6. Experimental Validation & Results", color: rgb("#0284c7"), icon-name: "check-circle")[
+    - #highlight("Testbed:", color: rgb("#0369a1")) 4--5 robots (FOG gyros, 16 sonars) across cluttered rooms, patio, and dynamic conference hall (100 people).
+    - #highlight("Performance Metric:", color: rgb("#0f172a")) Exploration efficiency:
+      #align(center)[#badge("Efficiency:", color: rgb("#0284c7")) $"Efficiency" = frac("Area Covered" [m^2], "Distance Traveled" [m])$]
+    - #highlight("Empirical Result:", color: rgb("#059669")) Market coordination improved efficiency over uncoordinated exploration by a factor of *3.4$times$*.
+  ]
+
+  // --- 7. EXAM TIP BOX ---
+  #tip-box(title: "HIGH-YIELD EXAM DISTINCTION (LECTURE 10)")[
+    *Why Market Approaches Excel:* Blends centralized optimality (Pareto team gain) with distributed fault tolerance (task re-bidding on robot failure).     *Price as Information Filter:* Prices convey compact aggregate utility without broadcasting heavy raw maps.     *Efficiency Factor:* $3.4times$ empirical gain in area covered per meter traveled.
+  ]
+]
