@@ -1562,18 +1562,18 @@
   // --- 2. CORE TASK ARCHETYPES ---
   #card(title: "2. Core MRS Task Archetypes", color: rgb("#0284c7"), icon-name: "briefcase")[
     #rounded-table(
-      columns: (0.85fr, 1.45fr),
+      columns: (0.9fr, 1.4fr),
       inset: 2.2pt,
       stroke: none,
       fill: (_, row) => if row == 0 { rgb("#e0f2fe") } else if calc.even(row) { rgb("#f8fafc") } else { rgb("#f1f5f9") },
       align: top + left,
       [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.2pt)[Task Archetype]],
-      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.2pt)[Simple Meaning & Example]],
-      [*Foraging*], [Find & collect scattered items to a home base/boundary (e.g. harvesting, trash pickup).],
-      [*Consuming*], [Perform work on an object *in-place* without moving it (e.g. assembly, spot-welding).],
-      [*Grazing*], [Visit *every single spot* to cover an entire area completely (e.g. lawn mowing, demining).],
-      [*Formations*], [Travel together while keeping a fixed shape or spacing (e.g. flocking, drone swarms).],
-      [*Object Transport*], [Team up to move a single heavy item one robot can't carry alone (e.g. box pushing).]
+      [#text(fill: rgb("#0369a1"), weight: "bold", size: 6.2pt)[Definition & Scope]],
+      [*Foraging*], [Collection of randomly placed items.],
+      [*Consuming*], [Perform work on object in place (e.g. assemble, disassembly, etc.).],
+      [*Grazing*], [Cover entire area adequately (e.g. for lawn mowing, etc.).],
+      [*Formations / Flocking*], [Team maintains a geometric pattern while moving.],
+      [*Object Transport*], [Collectively moving object.]
     )
   ]
 
